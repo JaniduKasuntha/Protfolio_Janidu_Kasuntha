@@ -1,38 +1,34 @@
 const Educations = [
   {
-    period: "2022 — Present",
+    period: "2024 — Present",
     degree:
       "BSc (Hons) in Information Technology Specializing in Artificial Intelligence",
     location: "Sri Lanka Institute of Information Technology (SLIIT) Malabe",
     description:
-      "Pursuing a comprehensive program that covers AI, machine learning, and data science. Engaging in hands-on projects and research to apply theoretical knowledge to real-world problems.",
+      "Pursuing a comprehensive program that covers AI, machine learning, and data science. Engaging in hands-on projects and research to apply theoretical knowledge to real-world problems. (Expected graduation 2028)",
     current: true,
   },
   {
-    period: "2022 — Present",
-    degree:
-      "BSc (Hons) in Information Technology Specializing in Artificial Intelligence",
-    location: "Sri Lanka Institute of Information Technology (SLIIT) Malabe",
+    period: "2023(2024)",
+    degree: "GCE Advanced Level",
+    location: "Nalanda College Colombo",
     description:
-      "Pursuing a comprehensive program that covers AI, machine learning, and data science. Engaging in hands-on projects and research to apply theoretical knowledge to real-world problems.",
+      "Completed Advanced Level on Commerce Stream with a result of 3-B.",
     current: false,
   },
   {
-    period: "2022 — Present",
-    degree:
-      "BSc (Hons) in Information Technology Specializing in Artificial Intelligence",
-    location: "Sri Lanka Institute of Information Technology (SLIIT) Malabe",
-    description:
-      "Pursuing a comprehensive program that covers AI, machine learning, and data science. Engaging in hands-on projects and research to apply theoretical knowledge to real-world problems.",
+    period: "2020",
+    degree: "GCE Ordinary Level",
+    location: "Nalanda College Colombo",
+    description: "",
     current: false,
   },
   {
-    period: "2022 — Present",
-    degree:
-      "BSc (Hons) in Information Technology Specializing in Artificial Intelligence",
-    location: "Sri Lanka Institute of Information Technology (SLIIT) Malabe",
+    period: "2019",
+    degree: "Advanced English Course",
+    location: "British Council",
     description:
-      "Pursuing a comprehensive program that covers AI, machine learning, and data science. Engaging in hands-on projects and research to apply theoretical knowledge to real-world problems.",
+      "Completed the Professional Reading, Writing and speaking English Course, strengthening academic and professional communication skills.",
     current: false,
   },
 ];

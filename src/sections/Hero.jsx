@@ -44,7 +44,7 @@ export const Hero = () => {
             <div className="animate-fade-in">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-primary">
                 <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                Ai Engineer
+                Ai & Software Engineer
               </span>
             </div>
             <div className="space-y-4">
@@ -60,19 +60,22 @@ export const Hero = () => {
               </h1>
               {/* Sub Headline */}
               <p className="text-lg text-muted-foreground max-w-xl animate-fade-in animation-delay-400 ">
-                I am a passionate AI Engineer dedicated to creating innovative
-                solutions that leverage the power of artificial
-                intelligence.With a strong background in machine learning and
-                deep learning, I strive to develop intelligent systems that
-                enhance user experiences and drive technological advancements.
+                I'm Janidu Kasuntha, a BSc (Hons) Information Technology
+                undergraduate specializing in Artificial Intelligence at SLIIT.
+                I enjoy developing AI-powered applications, full-stack web
+                platforms, and mobile solutions that solve practical problems.
+                Through academic and personal projects, I've gained hands-on
+                experience in machine learning, backend development, and modern
+                web technologies while continuously expanding my technical
+                skills.{" "}
               </p>
             </div>
             {/* CTAs */}
             <div className="flex flex-wrap gap-5 animate-fade-in animation-delay-300">
               <a href="#contact">
-              <Button  size="default">
-                Contact Me <ArrowRight className="ml-2 w-5 h-5 " />
-              </Button>
+                <Button size="default">
+                  Contact Me <ArrowRight className="ml-2 w-5 h-5 " />
+                </Button>
               </a>
               <AnimatedBorderButton
                 as="a"
@@ -96,7 +99,10 @@ export const Hero = () => {
                   },
                   { icon: FaXTwitter, href: "#" },
                 ].map((social, idx) => (
-                  <div key={idx} className="flex items-center gap-1 animate-fade-in ">
+                  <div
+                    key={idx}
+                    className="flex items-center gap-1 animate-fade-in "
+                  >
                     <a
                       href={social.href}
                       className=" p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all "

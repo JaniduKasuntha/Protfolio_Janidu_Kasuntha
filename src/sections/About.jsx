@@ -48,22 +48,22 @@ export const About = () => {
             </h2>
             <div className="space-y-4 p-1 text-muted-foreground animate-fade-in animation-delay-200 ">
               <p>
-                I'm a passionate software engineer with over 5 years of
-                experience crafting digital products that make a difference. My
-                journey started with a curiosity for how things work on the web,
-                and it has evolved into a deep expertise in modern frontend
-                technologies.
+                I'm an undergraduate specializing in Artificial Intelligence
+                with a strong interest in machine learning, software
+                engineering, and data-driven solutions. I enjoy transforming
+                ideas into practical applications by combining AI with modern
+                web and mobile technologies.
               </p>
               <p>
-                I specialize in React, Next.js, and TypeScript, building
-                everything from sleek landing pages to complex enterprise
-                applications. My approach combines technical excellence with a
-                keen eye for design and user experience.
+                My experience includes developing predictive machine learning
+                models, RESTful APIs, full-stack web applications, and
+                cross-platform mobile apps using React, React Native, Node.js,
+                Express.js, MongoDB, MySQL, and Python.
               </p>
               <p>
-                When I'm not coding, you'll find me exploring new technologies,
-                contributing to open-source projects, or sharing knowledge with
-                the developer community.
+                I believe the best way to learn is by building. Every project I
+                create helps me strengthen my problem-solving skills while
+                exploring new technologies and software engineering practices.
               </p>
             </div>
             <div className="p-2" />
