@@ -194,11 +194,9 @@ export const Projects = () => {
             </span>
           </h2>
           <p className="text-muted-foreground animate-fade-in animation-delay-200">
-            Here are some of the projects I've built to strengthen my skills in
-            Artificial Intelligence, software engineering, and full-stack
-            development. Each project focuses on solving real-world problems
-            while applying industry-standard technologies and best development
-            practices..
+            A showcase of full-stack systems and machine learning pipelines
+            built with precise engineering, high performance, and real-world
+            utility in mind
           </p>
         </div>
 

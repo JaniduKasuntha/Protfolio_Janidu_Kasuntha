@@ -60,14 +60,17 @@ export const Hero = () => {
               </h1>
               {/* Sub Headline */}
               <p className="text-lg text-muted-foreground max-w-xl animate-fade-in animation-delay-400 ">
-                I'm Janidu Kasuntha, a BSc (Hons) Information Technology
-                undergraduate specializing in Artificial Intelligence at SLIIT.
-                I enjoy developing AI-powered applications, full-stack web
-                platforms, and mobile solutions that solve practical problems.
-                Through academic and personal projects, I've gained hands-on
-                experience in machine learning, backend development, and modern
-                web technologies while continuously expanding my technical
-                skills.{" "}
+                I am a forward-thinking IT undergraduate specializing in
+                Artificial Intelligence, driven by the passion to bridge the gap
+                between intelligent machine learning models and scalable
+                full-stack software systems. With a solid foundation in Python,
+                JavaScript, and cloud-deployed environments, I build end-to-end
+                applications that solve real-world problems—from optimizing
+                backend architectures for hundreds of concurrent users to
+                training predictive models on hundreds of thousands of medical
+                records. I thrive on turning complex data into intuitive,
+                impactful user experiences and am eager to bring this dedication
+                to an AI or Software Engineering internship.
               </p>
             </div>
             {/* CTAs */}
