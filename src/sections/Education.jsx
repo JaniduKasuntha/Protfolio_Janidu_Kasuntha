@@ -1,4 +1,5 @@
 import { GraduationCap, Calendar, MapPin, Sparkles } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
 
 const educationList = [
   {
@@ -51,7 +52,7 @@ export const Education = () => {
 
       <div className="container mx-auto max-w-7xl px-6 relative z-10">
         {/* Section Header */}
-        <div className="max-w-3xl mb-16 space-y-3 animate-fade-in">
+        <Reveal className="max-w-3xl mb-16 space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-xs font-mono text-primary uppercase tracking-wider">
             <GraduationCap className="w-3.5 h-3.5" />
             <span>Academic Milestones</span>
@@ -62,20 +63,20 @@ export const Education = () => {
           <p className="text-base text-muted-foreground">
             A chronological timeline of academic achievements, professional training, and engineering education.
           </p>
-        </div>
+        </Reveal>
 
         {/* Timeline Container */}
         <div className="relative max-w-4xl mx-auto">
           {/* Vertical Timeline Guide */}
           <div className="absolute left-4 md:left-1/2 top-3 bottom-3 w-[2px] bg-gradient-to-b from-primary via-primary/30 to-border md:-translate-x-1/2" />
 
-          {/* Timeline Items */}
+          {/* Timeline Items with Stagger */}
           <div className="space-y-10">
             {educationList.map((item, idx) => (
-              <div
+              <Reveal
                 key={idx}
-                className="relative grid md:grid-cols-2 gap-8 items-start animate-fade-in"
-                style={{ animationDelay: `${idx * 150}ms` }}
+                delay={idx * 120}
+                className="relative grid md:grid-cols-2 gap-8 items-start"
               >
                 {/* Center Node Indicator */}
                 <div className="absolute left-4 md:left-1/2 top-4 w-4 h-4 rounded-full bg-background border-2 border-primary -translate-x-1/2 z-10 flex items-center justify-center">
@@ -135,7 +136,7 @@ export const Education = () => {
                     )}
                   </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

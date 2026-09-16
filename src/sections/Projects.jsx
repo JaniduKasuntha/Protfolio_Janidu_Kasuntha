@@ -197,6 +197,8 @@ const allProjects = [
   },
 ];
 
+import { Reveal } from "@/components/Reveal";
+
 export const Projects = () => {
   const [filter, setFilter] = useState("all");
   const [showAll, setShowAll] = useState(false);
@@ -225,7 +227,7 @@ export const Projects = () => {
 
       <div className="container mx-auto max-w-7xl px-6 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3 animate-fade-in">
+        <Reveal className="text-center max-w-3xl mx-auto mb-12 space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-xs font-mono text-primary uppercase tracking-wider">
             <FolderGit2 className="w-3.5 h-3.5" />
             <span>Featured Portfolio</span>
@@ -236,35 +238,37 @@ export const Projects = () => {
           <p className="text-base text-muted-foreground">
             A curated collection of intelligent machine learning pipelines, production full-stack systems, and cross-platform applications.
           </p>
-        </div>
+        </Reveal>
 
         {/* Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12 animate-fade-in animation-delay-100">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => {
-                setFilter(cat.id);
-                setShowAll(true);
-              }}
-              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
-                filter === cat.id
-                  ? "bg-primary text-white shadow-md shadow-primary/25"
-                  : "bg-surface/80 text-muted-foreground hover:text-foreground hover:bg-muted border border-white/5"
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
+        <Reveal delay={100}>
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => {
+                  setFilter(cat.id);
+                  setShowAll(true);
+                }}
+                className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
+                  filter === cat.id
+                    ? "bg-primary text-white shadow-md shadow-primary/25"
+                    : "bg-surface/80 text-muted-foreground hover:text-foreground hover:bg-muted border border-white/5"
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+        </Reveal>
 
         {/* Project Cards Grid */}
         <div className="grid md:grid-cols-2 gap-8">
           {visibleProjects.map((project, index) => (
-            <div
+            <Reveal
               key={project.id}
+              delay={index * 120}
               className="glass-card rounded-2xl overflow-hidden border border-white/5 hover:border-primary/40 transition-all duration-300 flex flex-col group shadow-xl shadow-black/20"
-              style={{ animationDelay: `${index * 150}ms` }}
             >
               {/* Project Screenshot Container with Zoom on Hover */}
               <div className="relative overflow-hidden aspect-video bg-surface/80">
@@ -279,7 +283,7 @@ export const Projects = () => {
                 {/* Top Badges */}
                 <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-strong text-[11px] font-mono text-primary border border-primary/30 shadow-md">
-                    <Sparkles className="w-3 h-3" />
+                    <Sparkles className="w-3.5 h-3.5" />
                     {project.badge}
                   </span>
                   <span className="text-[11px] font-mono text-slate-300 glass-strong px-2.5 py-1 rounded-full border border-white/10">
@@ -342,13 +346,13 @@ export const Projects = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 
         {/* Expand / Collapse Projects Toggle */}
         {filteredProjects.length > 4 && (
-          <div className="flex justify-center mt-12">
+          <Reveal delay={150} className="flex justify-center mt-12">
             <button
               onClick={() => setShowAll(!showAll)}
               className="group inline-flex items-center gap-2 px-6 py-3 rounded-full glass border border-primary/30 hover:border-primary text-sm font-semibold text-foreground hover:text-primary transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 cursor-pointer"
@@ -361,7 +365,7 @@ export const Projects = () => {
                 }`}
               />
             </button>
-          </div>
+          </Reveal>
         )}
       </div>
     </section>

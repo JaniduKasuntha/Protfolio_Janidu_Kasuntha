@@ -185,6 +185,8 @@ export const skillCategories = [
   },
 ];
 
+import { Reveal } from "@/components/Reveal";
+
 export const Skills = () => {
   const [activeTab, setActiveTab] = useState("all");
 
@@ -196,59 +198,60 @@ export const Skills = () => {
   return (
     <div className="space-y-8">
       {/* Category Tabs */}
-      <div className="flex flex-wrap items-center justify-center gap-2">
-        <button
-          onClick={() => setActiveTab("all")}
-          className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
-            activeTab === "all"
-              ? "bg-primary text-white shadow-md shadow-primary/25"
-              : "bg-surface/80 text-muted-foreground hover:text-foreground hover:bg-muted border border-white/5"
-          }`}
-        >
-          All Skills
-        </button>
-        {skillCategories.map((cat) => (
+      <Reveal delay={100}>
+        <div className="flex flex-wrap items-center justify-center gap-2">
           <button
-            key={cat.id}
-            onClick={() => setActiveTab(cat.id)}
+            onClick={() => setActiveTab("all")}
             className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
-              activeTab === cat.id
+              activeTab === "all"
                 ? "bg-primary text-white shadow-md shadow-primary/25"
                 : "bg-surface/80 text-muted-foreground hover:text-foreground hover:bg-muted border border-white/5"
             }`}
           >
-            {cat.name}
+            All Skills
           </button>
-        ))}
-      </div>
+          {skillCategories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setActiveTab(cat.id)}
+              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
+                activeTab === cat.id
+                  ? "bg-primary text-white shadow-md shadow-primary/25"
+                  : "bg-surface/80 text-muted-foreground hover:text-foreground hover:bg-muted border border-white/5"
+              }`}
+            >
+              {cat.name}
+            </button>
+          ))}
+        </div>
+      </Reveal>
 
       {/* Categorized Skills Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {displayedCategories.map((category) => (
-          <div
-            key={category.id}
-            className="glass-card rounded-2xl p-5 border border-white/5 hover:border-primary/30 transition-all duration-300"
-          >
-            <div className="flex items-center justify-between mb-4 pb-2 border-b border-white/5">
-              <h4 className="text-sm font-semibold text-foreground tracking-wide">
-                {category.name}
-              </h4>
-              <span className="text-xs text-muted-foreground bg-surface px-2.5 py-0.5 rounded-full border border-white/5 font-mono">
-                {category.skills.length}
-              </span>
+        {displayedCategories.map((category, idx) => (
+          <Reveal key={category.id} delay={120 + idx * 80}>
+            <div className="glass-card rounded-2xl p-5 border border-white/5 hover:border-primary/30 transition-all duration-300 h-full">
+              <div className="flex items-center justify-between mb-4 pb-2 border-b border-white/5">
+                <h4 className="text-sm font-semibold text-foreground tracking-wide">
+                  {category.name}
+                </h4>
+                <span className="text-xs text-muted-foreground bg-surface px-2.5 py-0.5 rounded-full border border-white/5 font-mono">
+                  {category.skills.length}
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skillName) => (
+                  <div
+                    key={skillName}
+                    className="tech-pill flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium cursor-default"
+                  >
+                    <span className="shrink-0">{skillIcons[skillName] || null}</span>
+                    <span>{skillName}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="flex flex-wrap gap-2">
-              {category.skills.map((skillName) => (
-                <div
-                  key={skillName}
-                  className="tech-pill flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium cursor-default"
-                >
-                  <span className="shrink-0">{skillIcons[skillName] || null}</span>
-                  <span>{skillName}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          </Reveal>
         ))}
       </div>
     </div>

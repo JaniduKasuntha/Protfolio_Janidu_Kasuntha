@@ -1,5 +1,6 @@
 import { Skills } from "@/components/Skills";
 import { Code2 } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
 
 export const SkillsSection = () => {
   return (
@@ -9,7 +10,7 @@ export const SkillsSection = () => {
 
       <div className="container mx-auto max-w-7xl px-6 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14 space-y-3 animate-fade-in">
+        <Reveal className="text-center max-w-2xl mx-auto mb-14 space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-xs font-mono text-primary uppercase tracking-wider">
             <Code2 className="w-3.5 h-3.5" />
             <span>Technical Toolkit</span>
@@ -20,7 +21,7 @@ export const SkillsSection = () => {
           <p className="text-sm sm:text-base text-muted-foreground">
             A comprehensive overview of languages, frameworks, AI libraries, and developer tools I use to build intelligent systems.
           </p>
-        </div>
+        </Reveal>
 
         {/* Categorized Skills Grid Component */}
         <Skills />
