@@ -1,184 +1,204 @@
 import { Button } from "@/components/Button";
 import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
-import { ArrowRight, Download, ChevronDown } from "lucide-react";
-import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
-import { skill } from "@/components/Skills";
-
-const skills = skill;
+import { ArrowRight, Download, ChevronDown, Sparkles, FolderGit2 } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa6";
+import { SiGmail } from "react-icons/si";
+import { skillIcons } from "@/components/Skills";
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0">
+    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-24 md:pt-28 pb-16">
+      {/* Background Image & Ambient Gradients */}
+      <div className="absolute inset-0 pointer-events-none">
         <img
-          src="bg.jpg"
-          alt="Background"
-          className=" w-full h-full object-cover opacity-40"
+          src="/bg.jpg"
+          alt="Atmosphere"
+          className="w-full h-full object-cover opacity-20"
         />
-        <div className="absolute inset-0 bg-linear-to-b from-background/10 via-background/50 to-background"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/80 to-background" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[140px]" />
       </div>
-      {/* Background dots */}
+
+      {/* Subtle Floating Ambient Particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(30)].map((_, i) => (
+        {[...Array(20)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-white rounded-full opacity-50"
+            className="absolute w-1 h-1 rounded-full opacity-40"
             style={{
-              backgroundColor: "#20B2A6",
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `slow-drift ${
-                10 + Math.random() * 10
-              }s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 5}s`,
+              backgroundColor: "#2dd4bf",
+              left: `${(i * 17) % 100}%`,
+              top: `${(i * 23) % 100}%`,
+              animation: `slow-drift ${12 + (i % 8)}s ease-in-out infinite`,
+              animationDelay: `${(i % 5)}s`,
             }}
           />
         ))}
       </div>
-      {/* Hero Content */}
-      <div className="container mx-auto px-6 pt-32 pb-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* left Column - Text Content */}
-          <div className="space-y-8">
-            <div className="animate-fade-in">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-primary">
-                <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                Ai & Software Engineer
+
+      {/* Main Hero Container */}
+      <div className="container mx-auto max-w-7xl px-6 relative z-10 my-auto">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          {/* Left Column - Headline & Information (7 cols) */}
+          <div className="lg:col-span-7 space-y-7">
+            {/* Status / Role Tag */}
+            <div className="animate-fade-in inline-flex">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass border border-primary/20 text-xs md:text-sm font-medium text-primary">
+                <span className="w-2 h-2 bg-primary rounded-full animate-ping" />
+                <span>AI & Software Engineering Undergraduate</span>
               </span>
             </div>
+
+            {/* Main Headline */}
             <div className="space-y-4">
-              {/* HeadLine*/}
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in animation-delay-100">
-                Crafting <span className="text-primary glow-text">digital</span>
-                <br />
-                experiences with
-                <br />
-                <span className="font-serif italic font-normal text-white">
-                  precision.
-                </span>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-foreground animate-fade-in animation-delay-100">
+                Crafting <span className="text-primary glow-text">intelligent</span> & scalable software experiences.
               </h1>
-              {/* Sub Headline */}
-              <p className="text-lg text-muted-foreground max-w-xl animate-fade-in animation-delay-400 ">
-                I am a forward-thinking IT undergraduate specializing in
-                Artificial Intelligence, driven by the passion to bridge the gap
-                between intelligent machine learning models and scalable
-                full-stack software systems. With a solid foundation in Python,
-                JavaScript, and cloud-deployed environments, I build end-to-end
-                applications that solve real-world problems—from optimizing
-                backend architectures for hundreds of concurrent users to
-                training predictive models on hundreds of thousands of medical
-                records. I thrive on turning complex data into intuitive,
-                impactful user experiences and am eager to bring this dedication
-                to an AI or Software Engineering internship.
+
+              {/* Refined, punchy bio text */}
+              <p className="text-base sm:text-lg text-muted-foreground max-w-2xl leading-relaxed animate-fade-in animation-delay-200">
+                Hi, I'm <span className="text-foreground font-semibold">Janidu Kasuntha</span>. I specialize in bridging predictive machine learning models with high-performance, full-stack applications. Seeking an AI or Software Engineering internship where I can build impactful systems.
               </p>
             </div>
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-5 animate-fade-in animation-delay-300">
-              <a href="#contact">
-                <Button size="default">
-                  Contact Me <ArrowRight className="ml-2 w-5 h-5 " />
+
+            {/* Primary & Secondary Call to Actions */}
+            <div className="flex flex-wrap items-center gap-4 animate-fade-in animation-delay-300">
+              <a href="#projects">
+                <Button size="default" variant="primary" className="group">
+                  <FolderGit2 className="w-4 h-4" />
+                  <span>View Projects</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </a>
+
               <AnimatedBorderButton
                 as="a"
                 href="/cv.pdf"
                 download="Janidu_Kasuntha_CV.pdf"
-                className="animate-fade-in animation-delay-400"
+                className="group"
               >
-                <Download />
-                Download CV <ArrowRight className="ml-2 w-5 h-5" />
+                <Download className="w-4 h-4 text-primary transition-transform group-hover:-translate-y-0.5" />
+                <span>Download CV</span>
               </AnimatedBorderButton>
             </div>
-            {/* Social Links */}
-            <div className="flex items-center gap-3 animate-fade-in animation-delay-400">
-              <span className="flex  items-center gap-4 ">Follow on :</span>
-              <div className="flex gap-3 ">
+
+            {/* Social Channels Bar */}
+            <div className="flex items-center gap-4 pt-2 animate-fade-in animation-delay-400">
+              <span className="text-xs uppercase tracking-wider text-muted-foreground/80 font-mono">
+                Connect:
+              </span>
+              <div className="flex items-center gap-2.5">
                 {[
-                  { icon: FaGithub, href: "https://github.com/JaniduKasuntha" },
+                  {
+                    icon: FaGithub,
+                    href: "https://github.com/JaniduKasuntha",
+                    label: "GitHub Profile",
+                  },
                   {
                     icon: FaLinkedin,
                     href: "https://www.linkedin.com/in/janidu-kasuntha/",
+                    label: "LinkedIn Profile",
                   },
-                  { icon: FaXTwitter, href: "#" },
+                  {
+                    icon: SiGmail,
+                    href: "https://mail.google.com/mail/?view=cm&fs=1&to=janidukasuntha123@gmail.com",
+                    label: "Compose Email via Gmail",
+                  },
                 ].map((social, idx) => (
-                  <div
+                  <a
                     key={idx}
-                    className="flex items-center gap-1 animate-fade-in "
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    title={social.label}
+                    className="p-2.5 rounded-full glass border border-white/10 hover:border-primary/50 hover:bg-primary/10 hover:text-primary transition-all duration-200 text-muted-foreground hover:scale-110 active:scale-95"
                   >
-                    <a
-                      href={social.href}
-                      className=" p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all "
-                    >
-                      <social.icon className="w-5 h-5" />
-                    </a>
-                  </div>
+                    <social.icon className="w-4 h-4" />
+                  </a>
                 ))}
               </div>
             </div>
           </div>
-          {/* Right Column - Profile image*/}
-          <div className="relative animate-fade-in animation-delay-300 ">
-            <div className="relative max-w-md mx-auto ">
-              <div className="relative glass rounded-3xl p-2 glow-border transition-transform duration-200 ease-in-out hover:scale-110">
-                {/* Profile image*/}
-                <img
-                  src="2.png"
-                  alt="myPD"
-                  className="w-full aspect-4/5 object-cover rounded-2xl image-wrapper"
-                />
-                {/* Floating badge*/}
-                <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-3 animate-float">
-                  <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                    <span className="text-sm font-medium">
-                      Available For Work
+
+          {/* Right Column - Profile Presentation (5 cols) */}
+          <div className="lg:col-span-5 flex justify-center animate-fade-in animation-delay-300">
+            <div className="relative w-full max-w-[340px] sm:max-w-[380px]">
+              {/* Outer decorative ring */}
+              <div className="absolute -inset-1.5 bg-gradient-to-r from-primary/30 via-teal-500/20 to-blue-500/30 rounded-3xl blur-lg opacity-70 group-hover:opacity-100 transition duration-500" />
+
+              {/* Profile Card Container */}
+              <div className="relative glass-card rounded-3xl p-3 border border-white/10 shadow-2xl">
+                <div className="relative overflow-hidden rounded-2xl bg-surface/50 aspect-[4/5]">
+                  <img
+                    src="/1.png"
+                    alt="Janidu Kasuntha"
+                    className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105"
+                  />
+                  {/* Subtle gradient shadow at bottom of image */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent pointer-events-none" />
+                </div>
+
+                {/* Floating Availability Badge */}
+                <div className="absolute -bottom-3 -right-3 glass-strong rounded-2xl px-4 py-2.5 border border-primary/30 shadow-xl animate-float">
+                  <div className="flex items-center gap-2.5">
+                    <span className="relative flex h-2.5 w-2.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+                    </span>
+                    <span className="text-xs font-semibold text-foreground tracking-wide">
+                      Available for Internships
                     </span>
                   </div>
                 </div>
-                {/* Stats badge*/}
-                <div className="absolute -top-5 -left-5 glass rounded-xl px-4 py-3 animate-float animation-delay-500">
-                  <div className="text-2xl font-bold text-primary">1+</div>
-                  <div className="text-xs text-muted-foreground ">Exp</div>
+
+                {/* Top Floating Badge */}
+                <div className="absolute -top-3 -left-3 glass-strong rounded-2xl px-3.5 py-2 border border-white/10 shadow-xl">
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-primary" />
+                    <span className="text-xs font-semibold text-foreground">
+                      SLIIT (AI Specialization)
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div>
-          {/* Skills section*/}
-          <div className="mt-10 animate-fade-in animation-delay-600">
-            <p className=" text-muted-foreground/75 mb-6 text-center">
-              Technologies worked on
-            </p>
-            <div className="relative overflow-hidden marquee-mask">
-              <div className="flex animate-marquee whitespace-nowrap">
-                {Object.entries(skills).map(([skill, icon], idx) => (
-                  <div
-                    key={idx}
-                    className="flex items-center gap-2 shrink-0 py-3 px-6 whitespace-nowrap"
-                  >
-                    <span className="text-sm font-semibold text-muted-foreground/50 hover:text-muted-foreground transition-colors">
-                      {icon}
-                    </span>
-                    <span className="text-xl font-semibold text-muted-foreground/50 hover:text-muted-foreground transition-colors">
-                      {skill}
-                    </span>
-                  </div>
-                ))}
-              </div>
+
+        {/* Marquee Technology Showcase */}
+        <div className="mt-16 md:mt-20 pt-8 border-t border-white/5 animate-fade-in animation-delay-500">
+          <p className="text-xs uppercase tracking-widest text-muted-foreground/70 mb-4 text-center font-mono">
+            Core Technologies & Tooling
+          </p>
+          <div className="relative overflow-hidden marquee-mask">
+            <div className="flex animate-marquee whitespace-nowrap">
+              {Object.entries(skillIcons).map(([name, icon], idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center gap-2 shrink-0 py-2 px-5 group cursor-default"
+                >
+                  <span className="text-muted-foreground/60 group-hover:text-primary transition-colors">
+                    {icon}
+                  </span>
+                  <span className="text-sm font-medium text-muted-foreground/70 group-hover:text-foreground transition-colors font-mono">
+                    {name}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
-      {/* Scroll indicator*/}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 animate-fade-in animation-delay-800">
+
+      {/* Scroll Down Indicator */}
+      <div className="hidden md:flex justify-center pt-8 animate-fade-in animation-delay-600">
         <a
           href="#about"
-          className="text-muted-foreground flex flex-col items-center gap-1"
+          className="group flex flex-col items-center gap-1 text-muted-foreground/60 hover:text-primary transition-colors text-xs font-mono"
         >
-          <span className="text-xs tracking-wider">SCROLL</span>
-          <ChevronDown className="w-11 animate-bounce " />
+          <span>EXPLORE</span>
+          <ChevronDown className="w-4 h-4 animate-bounce text-primary" />
         </a>
       </div>
     </section>

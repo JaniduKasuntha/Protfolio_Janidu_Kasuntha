@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { ArrowUpRight, ChevronDown } from "lucide-react";
+import {
+  ExternalLink,
+  ChevronDown,
+  FolderGit2,
+  Sparkles,
+  Layers,
+} from "lucide-react";
 import {
   FaGithub,
   FaReact,
@@ -39,104 +45,119 @@ import {
 } from "react-icons/tb";
 
 const tagIcons = {
-  React: <FaReact className="text-sky-400 w-6 h-6" />,
-  "React Native": <TbBrandReactNative className="text-sky-500 w-6 h-6" />,
-  Vite: <SiVite className="text-purple-400 w-6 h-6" />,
-  Expo: <SiExpo className="text-white w-6 h-6" />,
-  Express: <SiExpress className="text-gray-400 w-6 h-6" />,
-  FastAPI: <SiFastapi className="text-teal-400 w-6 h-6" />,
-  "Node.js": <FaNodeJs className="text-green-500 w-6 h-6" />,
-  Java: <FaJava className="text-red-400 w-6 h-6" />,
-  "Spring Boot": <SiSpringboot className="text-green-600 w-6 h-6" />,
-  "Spring Security": <SiSpringsecurity className="text-green-500 w-6 h-6" />,
-  Thymeleaf: <SiThymeleaf className="text-emerald-600 w-6 h-6" />,
-  Python: <FaPython className="text-yellow-400 w-6 h-6" />,
-  TensorFlow: <SiTensorflow className="text-orange-500 w-6 h-6" />,
-  "scikit-learn": <SiScikitlearn className="text-orange-400 w-6 h-6" />,
-  Pandas: <SiPandas className="text-indigo-400 w-6 h-6" />,
-  NumPy: <SiNumpy className="text-blue-500 w-6 h-6" />,
-  XGBoost: <TbBinaryTree className="text-yellow-500 w-6 h-6" />,
-  Matplotlib: <FaChartLine className="text-blue-300 w-6 h-6" />,
-  Seaborn: <FaChartBar className="text-teal-300 w-6 h-6" />,
-  Streamlit: <SiStreamlit className="text-red-500 w-6 h-6" />,
-  MySQL: <SiMysql className="text-blue-400 w-6 h-6" />,
-  MongoDB: <SiMongodb className="text-green-500 w-6 h-6" />,
-  JWT: <SiJsonwebtokens className="text-pink-500 w-6 h-6" />,
-  CSS: <FaCss3Alt className="text-blue-500 w-6 h-6" />,
-  "Gemini API": <SiGooglegemini className="text-indigo-400 w-6 h-6" />,
-  PayHere: <FaCreditCard className="text-amber-500 w-6 h-6" />,
-  "Groq SDK": <TbCpu className="text-orange-400 w-6 h-6" />,
-  SSE: <TbBroadcast className="text-cyan-400 w-6 h-6" />,
-  CatBoost: <TbBinaryTree className="text-yellow-500 w-6 h-6" />,
-  CAtBoost: <TbBinaryTree className="text-yellow-500 w-6 h-6" />,
-  "GoogleMaps API": <SiGooglemaps className="text-blue-500 w-6 h-6" />,
-  Vercel: <SiVercel className="text-silver w-6 h-6" />,
+  React: <FaReact className="text-cyan-400 w-3.5 h-3.5" />,
+  "React Native": <TbBrandReactNative className="text-sky-400 w-3.5 h-3.5" />,
+  Vite: <SiVite className="text-purple-400 w-3.5 h-3.5" />,
+  Expo: <SiExpo className="text-white w-3.5 h-3.5" />,
+  Express: <SiExpress className="text-gray-300 w-3.5 h-3.5" />,
+  FastAPI: <SiFastapi className="text-teal-400 w-3.5 h-3.5" />,
+  "Node.js": <FaNodeJs className="text-green-500 w-3.5 h-3.5" />,
+  Java: <FaJava className="text-red-400 w-3.5 h-3.5" />,
+  "Spring Boot": <SiSpringboot className="text-green-500 w-3.5 h-3.5" />,
+  "Spring Security": <SiSpringsecurity className="text-emerald-400 w-3.5 h-3.5" />,
+  Thymeleaf: <SiThymeleaf className="text-emerald-500 w-3.5 h-3.5" />,
+  Python: <FaPython className="text-yellow-400 w-3.5 h-3.5" />,
+  TensorFlow: <SiTensorflow className="text-orange-500 w-3.5 h-3.5" />,
+  "scikit-learn": <SiScikitlearn className="text-amber-500 w-3.5 h-3.5" />,
+  Pandas: <SiPandas className="text-blue-400 w-3.5 h-3.5" />,
+  NumPy: <SiNumpy className="text-sky-400 w-3.5 h-3.5" />,
+  XGBoost: <TbBinaryTree className="text-yellow-400 w-3.5 h-3.5" />,
+  CatBoost: <TbBinaryTree className="text-amber-400 w-3.5 h-3.5" />,
+  Matplotlib: <FaChartLine className="text-blue-300 w-3.5 h-3.5" />,
+  Seaborn: <FaChartBar className="text-teal-300 w-3.5 h-3.5" />,
+  Streamlit: <SiStreamlit className="text-red-400 w-3.5 h-3.5" />,
+  MySQL: <SiMysql className="text-sky-400 w-3.5 h-3.5" />,
+  MongoDB: <SiMongodb className="text-green-500 w-3.5 h-3.5" />,
+  JWT: <SiJsonwebtokens className="text-pink-400 w-3.5 h-3.5" />,
+  CSS: <FaCss3Alt className="text-blue-400 w-3.5 h-3.5" />,
+  "Gemini API": <SiGooglegemini className="text-indigo-400 w-3.5 h-3.5" />,
+  PayHere: <FaCreditCard className="text-amber-400 w-3.5 h-3.5" />,
+  "Groq SDK": <TbCpu className="text-orange-400 w-3.5 h-3.5" />,
+  SSE: <TbBroadcast className="text-cyan-300 w-3.5 h-3.5" />,
+  "Google Maps API": <SiGooglemaps className="text-red-400 w-3.5 h-3.5" />,
+  Vercel: <SiVercel className="text-slate-200 w-3.5 h-3.5" />,
 };
 
-const mainProjects = [
+const allProjects = [
   {
+    id: 1,
     title: "NCC eCare Platform",
+    category: "AI & Full-Stack",
+    badge: "Client Project",
+    featured: true,
     description:
-      "A client based smart e-channeling and health literacy platform for 'Narammala Channeling Center' with symptom-based specialist suggestions and an AI-powered medical report explainer using OCR and Gemini LLM. Used PayHere API for payment processing and integrated with MySQL database for secure data management.",
-    image: "/c.png", // Replace with your actual image path
+      "A client-based smart e-channeling and healthcare literacy platform for Narammala Channeling Center. Features symptom-based medical specialist recommendations and an AI-powered medical report explainer using OCR and Gemini LLM.",
+    image: "/c.png",
     tags: [
       "React",
-      "Express",
       "FastAPI",
+      "Express",
       "Node.js",
       "MySQL",
       "Gemini API",
       "PayHere",
       "Vercel",
     ],
-    link: "https://nccecare.vercel.app",
-    github: "https://github.com/JaniduKasuntha/NCC-eCare-Platform",
+    liveUrl: "https://nccecare.vercel.app",
+    githubUrl: "https://github.com/JaniduKasuntha/NCC-eCare-Platform",
   },
   {
+    id: 2,
     title: "Genie ChatBot AI",
+    category: "AI / LLM",
+    badge: "AI Assistant",
+    featured: true,
     description:
-      "An prototype AI assistant delivering low-latency streaming completions via Server-Sent Events, complete with token management and client-disconnect handling. Build to use minimumtokens usage on inout and output with an groq API key to access the Groq LLM API.",
-    image: "/g.png", // Replace with your actual image path
+      "A low-latency AI conversational assistant delivering real-time streaming completions via Server-Sent Events (SSE), built with token optimization, client-disconnect handling, and Groq SDK LLM integration.",
+    image: "/g.png",
     tags: ["React", "Vite", "Node.js", "Groq SDK", "SSE", "Vercel"],
-    link: " https://groq-gini-chat-bot.vercel.app", // Live link if available
-    github: "https://github.com/JaniduKasuntha/Groq_Gini_ChatBot",
+    liveUrl: "https://groq-gini-chat-bot.vercel.app",
+    githubUrl: "https://github.com/JaniduKasuntha/Groq_Gini_ChatBot",
   },
   {
-    title: "University Bill & Event Reminder System",
-    description:
-      "A secure full-stack dashboard featuring role-based access control and automated email reminders for academic billing cycles and campus event updates.",
-    image: "/f.png", // Replace with your actual image path
-    tags: ["Java", "Spring Boot", "Spring Security", "Thymeleaf", "MySQL"],
-    link: "#projects", // Live link if available
-    github:
-      "https://github.com/JaniduKasuntha/Web-based-Bill-and-Event-Reminder-System",
-  },
-  {
+    id: 3,
     title: "CampusBites Mobile App",
+    category: "Mobile & Full-Stack",
+    badge: "Mobile App",
+    featured: true,
     description:
-      "A multi-role mobile application streamlining campus meal pre-orders and vendor operations for Camps-Students, featuring digital menus, support tickets, and Food Reviewing . Build using Mern stack for cross-platform compatibility.",
-    image: "/a.png", // Replace with your actual image path
+      "A multi-role mobile application streamlining campus meal pre-orders and vendor operations for university students, featuring digital food menus, real-time status tracking, support tickets, and vendor reviews.",
+    image: "/a.png",
     tags: [
       "React Native",
       "Expo",
       "Node.js",
       "MongoDB",
       "JWT",
-      "CSS",
-      "GoogleMaps API",
+      "Google Maps API",
       "Vercel",
     ],
-    link: "https://campus-bites-mobile-app.vercel.app", // Live link if available
-    github: "https://github.com/JaniduKasuntha/CampusBites-Mobile-App",
+    liveUrl: "https://campus-bites-mobile-app.vercel.app",
+    githubUrl: "https://github.com/JaniduKasuntha/CampusBites-Mobile-App",
   },
-];
-
-const otherProjects = [
   {
-    title: "Heart Disease Risk Prediction ML",
+    id: 4,
+    title: "University Bill & Event Reminder System",
+    category: "Backend & Systems",
+    badge: "Enterprise Web",
+    featured: true,
     description:
-      "ML model for predicting heart disease risk based on balanced patient dataset of 75000+ records. Trained on CatBoost algorithm with the accuracy of 98%",
-    image: "/t.png", // Replace with your actual image path
+      "A secure full-stack dashboard featuring role-based access control (RBAC), automated scheduled email reminders for academic billing cycles, and campus event notifications built with Spring Security and MySQL.",
+    image: "/f.png",
+    tags: ["Java", "Spring Boot", "Spring Security", "Thymeleaf", "MySQL"],
+    liveUrl: null,
+    githubUrl:
+      "https://github.com/JaniduKasuntha/Web-based-Bill-and-Event-Reminder-System",
+  },
+  {
+    id: 5,
+    title: "Heart Disease Risk Prediction ML",
+    category: "AI / ML",
+    badge: "Machine Learning",
+    featured: false,
+    description:
+      "Machine learning diagnostic pipeline predicting heart disease risk based on a balanced clinical dataset of 75,000+ patient records. Evaluated multiple architectures and deployed CatBoost with 98% prediction accuracy.",
+    image: "/t.png",
     tags: [
       "Python",
       "TensorFlow",
@@ -148,14 +169,18 @@ const otherProjects = [
       "Seaborn",
       "Streamlit",
     ],
-    link: " #projects", // Live link if available
-    github: "#https://github.com/JaniduKasuntha/Heart-Disease-AI.git",
+    liveUrl: null,
+    githubUrl: "https://github.com/JaniduKasuntha/Heart-Disease-AI",
   },
   {
+    id: 6,
     title: "Disease Prediction System ML",
+    category: "AI / ML",
+    badge: "Machine Learning",
+    featured: false,
     description:
-      "ML model for predicting disease of the patient by taking patient symptoms as input. A Dataset of 400000+ records was used and ran through several preprocessing piplines to make the dataset balanced and algorithms to gain the highest accuracy/F1/Recal. selceted XGBoost algorithm with the accuracy of 92%",
-    image: "/p.png", // Replace with your actual image path
+      "Multi-disease classification model taking patient symptoms as input. Evaluated over 400,000+ records across preprocessing and class-balancing pipelines; achieved 92% accuracy/F1 score with an optimized XGBoost model.",
+    image: "/p.png",
     tags: [
       "Python",
       "scikit-learn",
@@ -167,175 +192,177 @@ const otherProjects = [
       "Streamlit",
       "React",
     ],
-    link: " https://nccecare.vercel.app/ecare/smart-doc-suggestion", // Live link if available
-    github: "#projects",
+    liveUrl: "https://nccecare.vercel.app/ecare/smart-doc-suggestion",
+    githubUrl: "https://github.com/JaniduKasuntha/NCC-eCare-Platform",
   },
 ];
 
 export const Projects = () => {
-  const [moreProjects, setMoreProjects] = useState(false);
-  return (
-    <section id="projects" className="py-6 relative overflow-hidden">
-      {/*Background glows*/}
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-highlight/5 rounded-full blur-3xl" />
+  const [filter, setFilter] = useState("all");
+  const [showAll, setShowAll] = useState(false);
 
-      <div className="container mx-auto px-6 relative z-10">
-        {/*Section header*/}
-        <div className="text-center mb-16 mx-auto max-w-3xl animate-fade-in animation-delay-100">
-          <span className="text-sm text-secondary-foreground font-medium tracking-wider uppercase animate-fade-in">
-            Featured work
-          </span>
-          <h2 className="text-4xl font-bold leading-tight mt-4 mb-6 text-secondary-foreground animate-fade-in animation-delay-100">
-            Projects that
-            <span className="font-serif font-normal text-white italic">
-              {" "}
-              make an impact
-            </span>
+  const categories = [
+    { id: "all", label: "All Projects" },
+    { id: "ai", label: "AI & Machine Learning" },
+    { id: "web", label: "Full-Stack Web" },
+    { id: "mobile", label: "Mobile Apps" },
+  ];
+
+  const filteredProjects = allProjects.filter((p) => {
+    if (filter === "ai") return p.category.includes("AI") || p.category.includes("ML");
+    if (filter === "web") return p.category.includes("Full-Stack") || p.category.includes("Backend") || p.category.includes("Web");
+    if (filter === "mobile") return p.category.includes("Mobile");
+    return true;
+  });
+
+  const visibleProjects = showAll ? filteredProjects : filteredProjects.slice(0, 4);
+
+  return (
+    <section id="projects" className="py-24 md:py-32 relative overflow-hidden bg-background/50">
+      {/* Background Ambience */}
+      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="container mx-auto max-w-7xl px-6 relative z-10">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3 animate-fade-in">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-xs font-mono text-primary uppercase tracking-wider">
+            <FolderGit2 className="w-3.5 h-3.5" />
+            <span>Featured Portfolio</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+            Engineered with <span className="text-primary glow-text">Precision & Impact</span>
           </h2>
-          <p className="text-muted-foreground animate-fade-in animation-delay-200">
-            A showcase of full-stack systems and machine learning pipelines
-            built with precise engineering, high performance, and real-world
-            utility in mind
+          <p className="text-base text-muted-foreground">
+            A curated collection of intelligent machine learning pipelines, production full-stack systems, and cross-platform applications.
           </p>
         </div>
 
-        {/* Projects grids*/}
-        <div className="grid md:grid-cols-2 gap-8">
-          {mainProjects.map((project, index) => (
-            <div
-              key={index}
-              className="group glass rounded-2xl shadow-lg overflow-hidden animate-fade-in animation-delay-200 md:row-span-1"
-              style={{ animationDelay: `${index * 200}ms` }}
+        {/* Filter Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-12 animate-fade-in animation-delay-100">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => {
+                setFilter(cat.id);
+                setShowAll(true);
+              }}
+              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
+                filter === cat.id
+                  ? "bg-primary text-white shadow-md shadow-primary/25"
+                  : "bg-surface/80 text-muted-foreground hover:text-foreground hover:bg-muted border border-white/5"
+              }`}
             >
-              {/* Image containers */}
-              <div className="relative overflow-hidden aspect-video">
-                <div className="group-hover:opacity-65 tansition-opacity duration-200">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-card via-card/50 to-transparent opacity-70 " />
-                </div>
-                {/* Overlay links*/}
-                <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <a
-                    href={project.link}
-                    className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
-                  >
-                    <ArrowUpRight className="w-8 h-8" />
-                  </a>
-                  <a
-                    href={project.github}
-                    className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
-                  >
-                    <FaGithub className="w-8 h-8" />
-                  </a>
-                </div>
-              </div>
-
-              {/* Details/content containers */}
-              <div className="p-6">
-                <div>
-                  <h3 className="text-xl font-semibold mb-2 group-hover:text-secondary-foreground">
-                    {project.title}
-                  </h3>
-                </div>
-                <p className="text-muted-foreground mb-4 text-sm">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2 ">
-                  {project.tags.map((tag, idx) => (
-                    <span
-                      key={idx}
-                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface text-xs font-medium border border-border/50 text-muted-foreground hover:border-primary/50 hover:text-primary transition-all duration-300"
-                    >
-                      {tagIcons[tag] || null}
-                      <span>{tag}</span>
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
+              {cat.label}
+            </button>
           ))}
         </div>
 
-        {/* OtherProjects grids*/}
-        {moreProjects && (
-          <div className="grid py-8 md:grid-cols-2 gap-8">
-            {otherProjects.map((project, index) => (
-              <div
-                key={index}
-                className="group glass rounded-2xl shadow-lg overflow-hidden animate-fade-in animation-delay-200 md:row-span-1"
-                style={{ animationDelay: `${index * 200}ms` }}
-              >
-                {/* Image containers */}
-                <div className="relative overflow-hidden aspect-video">
-                  <div className="group-hover:opacity-70 tansition-opacity duration-200">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-card via-card/50 to-transparent opacity-70 " />
-                  </div>
-                  {/* Overlay links*/}
-                  <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <a
-                      href={project.link}
-                      className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
-                    >
-                      <ArrowUpRight className="w-8 h-8" />
-                    </a>
-                    <a
-                      href={project.github}
-                      className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
-                    >
-                      <FaGithub className="w-8 h-8" />
-                    </a>
-                  </div>
-                </div>
+        {/* Project Cards Grid */}
+        <div className="grid md:grid-cols-2 gap-8">
+          {visibleProjects.map((project, index) => (
+            <div
+              key={project.id}
+              className="glass-card rounded-2xl overflow-hidden border border-white/5 hover:border-primary/40 transition-all duration-300 flex flex-col group shadow-xl shadow-black/20"
+              style={{ animationDelay: `${index * 150}ms` }}
+            >
+              {/* Project Screenshot Container with Zoom on Hover */}
+              <div className="relative overflow-hidden aspect-video bg-surface/80">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent opacity-80" />
 
-                {/* Details/content containers */}
-                <div className="p-6">
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2 group-hover:text-secondary-foreground">
-                      {project.title}
-                    </h3>
-                  </div>
-                  <p className="text-muted-foreground mb-4 text-sm">
+                {/* Top Badges */}
+                <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-strong text-[11px] font-mono text-primary border border-primary/30 shadow-md">
+                    <Sparkles className="w-3 h-3" />
+                    {project.badge}
+                  </span>
+                  <span className="text-[11px] font-mono text-slate-300 glass-strong px-2.5 py-1 rounded-full border border-white/10">
+                    {project.category}
+                  </span>
+                </div>
+              </div>
+
+              {/* Project Body */}
+              <div className="p-6 sm:p-7 flex flex-col flex-grow justify-between space-y-5">
+                <div className="space-y-3">
+                  <h3 className="text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap gap-2 ">
+                </div>
+
+                <div className="space-y-5">
+                  {/* Technology Tags */}
+                  <div className="flex flex-wrap gap-1.5 pt-1">
                     {project.tags.map((tag, idx) => (
                       <span
                         key={idx}
-                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface text-xs font-medium border border-border/50 text-muted-foreground hover:border-primary/50 hover:text-primary transition-all duration-300"
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium bg-surface/90 text-slate-300 border border-white/5 hover:border-primary/30 transition-colors"
                       >
                         {tagIcons[tag] || null}
                         <span>{tag}</span>
                       </span>
                     ))}
                   </div>
+
+                  {/* Action Buttons (GitHub + Live Demo) */}
+                  <div className="flex items-center gap-3 pt-3 border-t border-white/5">
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs sm:text-sm font-semibold shadow-md shadow-primary/20 transition-all hover:scale-[1.02] active:scale-95"
+                      >
+                        <span>Live Demo</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-surface hover:bg-muted text-slate-200 border border-white/10 hover:border-primary/40 text-xs sm:text-sm font-medium transition-all hover:scale-[1.02] active:scale-95"
+                      >
+                        <FaGithub className="w-4 h-4 text-slate-200" />
+                        <span>Source Code</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
-            ))}
+            </div>
+          ))}
+        </div>
+
+        {/* Expand / Collapse Projects Toggle */}
+        {filteredProjects.length > 4 && (
+          <div className="flex justify-center mt-12">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="group inline-flex items-center gap-2 px-6 py-3 rounded-full glass border border-primary/30 hover:border-primary text-sm font-semibold text-foreground hover:text-primary transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 cursor-pointer"
+            >
+              <Layers className="w-4 h-4 text-primary" />
+              <span>{showAll ? "Show Featured Projects" : `View All Projects (${filteredProjects.length})`}</span>
+              <ChevronDown
+                className={`w-4 h-4 text-primary transition-transform duration-300 ${
+                  showAll ? "rotate-180" : ""
+                }`}
+              />
+            </button>
           </div>
         )}
-        <div className="flex items-center justify-center py-10">
-          <button
-            onClick={() => setMoreProjects(!moreProjects)}
-            className="group relative flex items-center gap-2 px-6 py-4 rounded-full border border-primary/20 bg-card/30 hover:bg-primary/10 hover:border-primary/50  hover:text-primary shadow-lg shadow-black/10 backdrop-blur-md transition-all duration-300 active:scale-95 animate-fade-in animation-delay-200 cursor-pointer"
-          >
-            <span className="font-semibold text-base tracking-wide">
-              {moreProjects ? "Show Less Projects" : "More Projects"}
-            </span>
-            <ChevronDown
-              className={`w-4 h-4 transition-transform duration-300 ${moreProjects ? "rotate-180" : ""}`}
-            />
-          </button>
-        </div>
       </div>
     </section>
   );
