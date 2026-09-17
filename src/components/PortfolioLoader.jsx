@@ -10,7 +10,7 @@ import { useEffect, useRef, useState } from "react";
 
    Example: change LOAD_DURATION_MS to 4000 for a 4-second load.
    ============================================================ */
-const LOAD_DURATION_MS = 3000; // ring + bar fill time
+const LOAD_DURATION_MS = 2500; // ring + bar fill time
 const FADE_DURATION_MS = 500;  // fade-out time after complete
 
 /* SVG ring geometry */
