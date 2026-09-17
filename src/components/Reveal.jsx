@@ -10,7 +10,10 @@ export const Reveal = ({
   ...props
 }) => {
   const ref = useRef(null);
-  const [isRevealed, setIsRevealed] = useState(false);
+  const [isRevealed, setIsRevealed] = useState(() =>
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
 
   useEffect(() => {
     // Respect accessibility prefers-reduced-motion
@@ -19,7 +22,6 @@ export const Reveal = ({
         "(prefers-reduced-motion: reduce)"
       ).matches;
       if (prefersReducedMotion) {
-        setIsRevealed(true);
         return;
       }
     }
@@ -46,7 +48,7 @@ export const Reveal = ({
 
   const getTransform = () => {
     if (isRevealed) return "translate3d(0, 0, 0)";
-    if (direction === "up") return "translate3d(0, 24px, 0)";
+    if (direction === "up") return "translate3d(0, 12px, 0)";
     return "none";
   };
 
@@ -57,7 +59,7 @@ export const Reveal = ({
       style={{
         opacity: isRevealed ? 1 : 0,
         transform: getTransform(),
-        transition: `opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
+        transition: `opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
         willChange: isRevealed ? "auto" : "opacity, transform",
       }}
       {...props}

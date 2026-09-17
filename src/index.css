@@ -1,252 +1,314 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+
+/* =========================================================
+   DESIGN SYSTEM
+   OLED TECHNICAL DARK PORTFOLIO
+========================================================= */
 
 @theme {
+  /* Canvas */
   --color-background: #090d12;
-  --color-foreground: #f1f5f9;
+  --color-foreground: #f8fafc;
+  --color-canvas: #090d12;
 
-  --color-card: #0f151d;
-  --color-surface: #161f2b;
+  /* Surfaces */
+  --color-surface-1: #10161d;
+  --color-surface-2: #161d26;
+  --color-surface-hover: #1c2530;
 
+  /* Borders */
+  --color-border: #202a36;
+  --color-border-muted: #2b3746;
+
+  /* Primary */
   --color-primary: #14b8a6;
-  --color-primary-hover: #0d9488;
-  --color-primary-foreground: #ffffff;
+  --color-primary-hover: #2dd4bf;
+  --color-primary-foreground: #080a0e;
 
-  --color-secondary: #1a2430;
+  /* Secondary */
+  --color-secondary: #151a22;
   --color-secondary-foreground: #2dd4bf;
 
-  --color-muted: #1e293b;
+  /* Muted */
+  --color-muted: #1c222d;
   --color-muted-foreground: #94a3b8;
 
-  --color-border: #1e2a38;
-  --radius: 0.75rem;
+  /* Accent */
+  --color-accent: #14b8a6;
+  --color-accent-text: #2dd4bf;
 
-  --color-highlight: #f59e0b;
+  /* Status */
+  --color-status-live: #10b981;
+
+  --radius: 0.5rem;
 }
+
+/* =========================================================
+   BASE
+========================================================= */
 
 @layer base {
   html {
     scroll-behavior: smooth;
     color-scheme: dark;
   }
-  
+
+  body {
+    margin: 0;
+
+    /*
+      Slightly brighter than the previous pure OLED black.
+
+      This prevents the portfolio from feeling like a completely
+      black page when moving away from the Hero background.
+    */
+    background-color: var(--color-background);
+
+    background-image:
+      radial-gradient(
+        circle at 50% 0%,
+        rgba(45, 212, 191, 0.055),
+        transparent 34rem
+      ),
+      radial-gradient(
+        circle at 15% 45%,
+        rgba(20, 184, 166, 0.025),
+        transparent 32rem
+      ),
+      linear-gradient(
+        180deg,
+        #0a0e13 0%,
+        #090d12 45%,
+        #0b0f14 100%
+      );
+
+    background-attachment: fixed;
+
+    color: var(--color-foreground);
+
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
+
+    overflow-x: hidden;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   button {
     cursor: pointer;
   }
-  
-  body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    overflow-x: hidden;
+
+  a {
+    text-decoration: none;
   }
 
   ::selection {
-    background-color: rgba(20, 184, 166, 0.3);
+    background-color: rgba(20, 184, 166, 0.25);
     color: #2dd4bf;
   }
 }
 
-@layer components {
-  .glass {
-    background: rgba(15, 21, 29, 0.7);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-  }
+/* =========================================================
+   SUBTLE SECTION ATMOSPHERE
 
-  .glass-card {
-    background: linear-gradient(135deg, rgba(22, 31, 43, 0.7) 0%, rgba(15, 21, 29, 0.85) 100%);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-  }
+   Sections remain transparent so the global background can
+   continue through the entire page instead of becoming pure
+   black after the Hero.
+========================================================= */
 
-  .glass-card:hover {
-    border-color: rgba(20, 184, 166, 0.3);
-  }
-
-  .glass-strong {
-    background: rgba(15, 21, 29, 0.92);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .glow-text {
-    text-shadow: 0 0 24px rgba(20, 184, 166, 0.35);
-  }
-
-  .glow-border {
-    box-shadow: 0 0 25px rgba(20, 184, 166, 0.12), inset 0 0 20px rgba(20, 184, 166, 0.03);
-  }
-
-  .hero-gradient {
-    background: radial-gradient(circle at 50% 20%, rgba(20, 184, 166, 0.12) 0%, transparent 60%);
-  }
-
-  .tech-pill {
-    background: rgba(22, 31, 43, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    color: #94a3b8;
-    transition: all 0.25s ease;
-  }
-
-  .tech-pill:hover {
-    background: rgba(20, 184, 166, 0.12);
-    border-color: rgba(20, 184, 166, 0.35);
-    color: #2dd4bf;
-  }
+section {
+  position: relative;
 }
+
+/* =========================================================
+   REVEAL / ENTRANCE ANIMATION
+========================================================= */
 
 @keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(12px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
+.animate-fade-in {
+  animation: fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
+
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
+.animation-delay-800 {
+  animation-delay: 800ms;
+}
+
+/* =========================================================
+   AMBIENT PARTICLES
+========================================================= */
 
 @keyframes slow-drift {
-  0%, 100% {
-    transform: translate(0, 0);
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.2;
   }
-  25% {
-    transform: translate(15px, -20px);
+
+  33% {
+    transform: translate(15px, -15px) scale(1.1);
+    opacity: 0.5;
   }
-  50% {
-    transform: translate(-10px, -15px);
-  }
-  75% {
-    transform: translate(20px, 10px);
+
+  66% {
+    transform: translate(-10px, 20px) scale(0.9);
+    opacity: 0.3;
   }
 }
 
+/* =========================================================
+   TECHNOLOGY MARQUEE
+========================================================= */
+
 @keyframes marquee {
-  0% {
+  from {
     transform: translateX(0);
   }
-  100% {
+
+  to {
     transform: translateX(-50%);
   }
 }
 
 .animate-marquee {
-  animation: marquee 35s linear infinite;
+  animation: marquee 45s linear infinite;
 }
 
-.animate-marquee:hover {
+
+/*
+ .animate-marquee:hover {
   animation-play-state: paused;
 }
+*/
 
-.animate-fade-in {
-  animation: fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-.animation-delay-100 { animation-delay: 100ms; }
-.animation-delay-200 { animation-delay: 200ms; }
-.animation-delay-300 { animation-delay: 300ms; }
-.animation-delay-400 { animation-delay: 400ms; }
-.animation-delay-500 { animation-delay: 500ms; }
-.animation-delay-600 { animation-delay: 600ms; }
-.animation-delay-800 { animation-delay: 800ms; }
-
-.animate-float {
-  animation: float 4s ease-in-out infinite;
-}
-
-@keyframes animated-border {
-  0% {
-    stroke-dashoffset: 400;
-  }
-  100% {
-    stroke-dashoffset: -550;
-  }
-}
-
-.group:hover .animated-border-path {
-  animation: animated-border 3s linear infinite;
-}
-
-.animated-border:hover {
-  background-color: rgba(20, 184, 166, 0.1);
-  backdrop-filter: blur(16px);
-  box-shadow: 0 0 20px rgba(20, 184, 166, 0.15);
-}
-
-.animated-border:active {
-  background-color: rgba(20, 184, 166, 0.2);
-  box-shadow: 0 0 30px rgba(20, 184, 166, 0.3);
-}
-
-.timeline-glow {
-  box-shadow: 0 0 20px rgba(20, 184, 166, 0.4), 0 0 40px rgba(20, 184, 166, 0.2);
-}
-
-.gradiant {
-  background: linear-gradient(135deg, #2dd4bf 0%, #38bdf8 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-@keyframes shine {
-  0% { background-position: 200% center; }
-  100% { background-position: -200% center; }
-}
-
-.shine-text {
-  background: linear-gradient(90deg, #94a3b8 0%, #ffffff 50%, #94a3b8 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shine 5s linear infinite;
-}
-
+/*
+  Soft fade on the left/right sides instead of abruptly
+  cutting off technologies.
+*/
 .marquee-mask {
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 12%,
-    black 88%,
-    transparent
-  );
   mask-image: linear-gradient(
     to right,
     transparent,
-    black 12%,
-    black 88%,
+    black 7%,
+    black 93%,
+    transparent
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 7%,
+    black 93%,
     transparent
   );
 }
 
-/* Background grid utility */
-.bg-grid-pattern {
-  background-size: 32px 32px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+/*
+  Skills.jsx puts its own muted color classes on icons.
+  This overrides them only inside the Hero marquee.
+*/
+.marquee-icon svg {
+  color: currentColor !important;
 }
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090d12;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #26313e;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #344253;
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
   *,
-  ::before,
-  ::after {
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  /*
+    Instead of leaving a half-translated marquee when
+    animation is disabled, show the technologies normally.
+  */
+  .animate-marquee {
+    animation: none !important;
+    transform: none !important;
+    flex-wrap: wrap;
+    white-space: normal;
+    justify-content: center;
+  }
+
+  .marquee-mask {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+}
+@keyframes particle-drift {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(var(--moveX), var(--moveY));
   }
 }

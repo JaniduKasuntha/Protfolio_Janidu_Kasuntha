@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Reveal } from "@/components/Reveal";
 import {
   FaGithub,
   FaReact,
@@ -14,7 +14,6 @@ import {
   FaHtml5,
   FaJs,
 } from "react-icons/fa6";
-
 import {
   SiVite,
   SiExpo,
@@ -45,7 +44,6 @@ import {
   SiRailway,
   SiTailwindcss,
 } from "react-icons/si";
-
 import {
   TbBrandReactNative,
   TbCpu,
@@ -54,82 +52,88 @@ import {
   TbBrandVscode,
 } from "react-icons/tb";
 
+const ICON_CLASS = "w-[18px] h-[18px] text-muted-foreground group-hover:text-foreground transition-colors";
+
 export const skillIcons = {
   // Languages
-  Python: <FaPython className="w-5 h-5 text-yellow-400" />,
-  Java: <FaJava className="w-5 h-5 text-red-400" />,
-  JavaScript: <FaJs className="w-5 h-5 text-yellow-300" />,
-  PHP: <SiPhp className="w-5 h-5 text-indigo-400" />,
-  HTML5: <FaHtml5 className="w-5 h-5 text-orange-500" />,
-  CSS: <FaCss3Alt className="w-5 h-5 text-blue-400" />,
+  Python: <FaPython className={ICON_CLASS} />,
+  Java: <FaJava className={ICON_CLASS} />,
+  JavaScript: <FaJs className={ICON_CLASS} />,
+  PHP: <SiPhp className={ICON_CLASS} />,
+  HTML5: <FaHtml5 className={ICON_CLASS} />,
+  CSS: <FaCss3Alt className={ICON_CLASS} />,
 
   // Frontend
-  React: <FaReact className="w-5 h-5 text-cyan-400" />,
-  "React Native": <TbBrandReactNative className="w-5 h-5 text-sky-400" />,
-  Vite: <SiVite className="w-5 h-5 text-purple-400" />,
-  Expo: <SiExpo className="w-5 h-5 text-white" />,
-  "Tailwind CSS": <SiTailwindcss className="w-5 h-5 text-teal-400" />,
+  React: <FaReact className={ICON_CLASS} />,
+  "React Native": <TbBrandReactNative className={ICON_CLASS} />,
+  Vite: <SiVite className={ICON_CLASS} />,
+  Expo: <SiExpo className={ICON_CLASS} />,
+  "Tailwind CSS": <SiTailwindcss className={ICON_CLASS} />,
 
   // Backend
-  "Node.js": <FaNodeJs className="w-5 h-5 text-green-500" />,
-  Express: <SiExpress className="w-5 h-5 text-gray-300" />,
-  FastAPI: <SiFastapi className="w-5 h-5 text-teal-400" />,
-  "Spring Boot": <SiSpringboot className="w-5 h-5 text-green-500" />,
-  "Spring Security": <SiSpringsecurity className="w-5 h-5 text-emerald-400" />,
-  Thymeleaf: <SiThymeleaf className="w-5 h-5 text-emerald-500" />,
-  JWT: <SiJsonwebtokens className="w-5 h-5 text-pink-400" />,
-  SSE: <TbBroadcast className="w-5 h-5 text-cyan-300" />,
+  "Node.js": <FaNodeJs className={ICON_CLASS} />,
+  Express: <SiExpress className={ICON_CLASS} />,
+  FastAPI: <SiFastapi className={ICON_CLASS} />,
+  "Spring Boot": <SiSpringboot className={ICON_CLASS} />,
+  "Spring Security": <SiSpringsecurity className={ICON_CLASS} />,
+  Thymeleaf: <SiThymeleaf className={ICON_CLASS} />,
+  JWT: <SiJsonwebtokens className={ICON_CLASS} />,
+  SSE: <TbBroadcast className={ICON_CLASS} />,
 
   // AI & ML
-  TensorFlow: <SiTensorflow className="w-5 h-5 text-orange-500" />,
-  "scikit-learn": <SiScikitlearn className="w-5 h-5 text-amber-500" />,
-  Pandas: <SiPandas className="w-5 h-5 text-blue-400" />,
-  NumPy: <SiNumpy className="w-5 h-5 text-sky-500" />,
-  XGBoost: <TbBinaryTree className="w-5 h-5 text-yellow-500" />,
-  CatBoost: <TbBinaryTree className="w-5 h-5 text-amber-400" />,
-  Matplotlib: <FaChartLine className="w-5 h-5 text-blue-300" />,
-  Seaborn: <FaChartBar className="w-5 h-5 text-teal-300" />,
-  Streamlit: <SiStreamlit className="w-5 h-5 text-red-500" />,
-  "Gemini API": <SiGooglegemini className="w-5 h-5 text-indigo-400" />,
-  "Groq SDK": <TbCpu className="w-5 h-5 text-orange-400" />,
+  TensorFlow: <SiTensorflow className={ICON_CLASS} />,
+  "scikit-learn": <SiScikitlearn className={ICON_CLASS} />,
+  Pandas: <SiPandas className={ICON_CLASS} />,
+  NumPy: <SiNumpy className={ICON_CLASS} />,
+  XGBoost: <TbBinaryTree className={ICON_CLASS} />,
+  CatBoost: <TbBinaryTree className={ICON_CLASS} />,
+  Matplotlib: <FaChartLine className={ICON_CLASS} />,
+  Seaborn: <FaChartBar className={ICON_CLASS} />,
+  Streamlit: <SiStreamlit className={ICON_CLASS} />,
+  "Gemini API": <SiGooglegemini className={ICON_CLASS} />,
+  "Groq SDK": <TbCpu className={ICON_CLASS} />,
 
   // Databases
-  MySQL: <SiMysql className="w-5 h-5 text-sky-400" />,
-  MongoDB: <SiMongodb className="w-5 h-5 text-green-500" />,
+  MySQL: <SiMysql className={ICON_CLASS} />,
+  MongoDB: <SiMongodb className={ICON_CLASS} />,
 
   // Tools & Cloud
-  Git: <FaGithub className="w-5 h-5 text-slate-200" />,
-  "Google Maps API": <SiGooglemaps className="w-5 h-5 text-red-400" />,
-  PayHere: <FaCreditCard className="w-5 h-5 text-amber-500" />,
-  Vercel: <SiVercel className="w-5 h-5 text-white" />,
-  Railway: <SiRailway className="w-5 h-5 text-purple-400" />,
-  Netlify: <SiNetlify className="w-5 h-5 text-teal-400" />,
-  Postman: <SiPostman className="w-5 h-5 text-orange-400" />,
-  "VS Code": <TbBrandVscode className="w-5 h-5 text-blue-400" />,
-  "IntelliJ IDEA": <SiIntellijidea className="w-5 h-5 text-pink-500" />,
-  Ubuntu: <SiUbuntu className="w-5 h-5 text-orange-500" />,
-  Windows: <FaWindows className="w-5 h-5 text-blue-400" />,
-  Arduino: <SiArduino className="w-5 h-5 text-teal-400" />,
-  RStudio: <SiRstudioide className="w-5 h-5 text-blue-400" />,
-  "Microsoft 365": <FaMicrosoft className="w-5 h-5 text-amber-400" />,
-  Figma: <SiFigma className="w-5 h-5 text-purple-400" />,
+  Git: <FaGithub className={ICON_CLASS} />,
+  "Google Maps API": <SiGooglemaps className={ICON_CLASS} />,
+  PayHere: <FaCreditCard className={ICON_CLASS} />,
+  Vercel: <SiVercel className={ICON_CLASS} />,
+  Railway: <SiRailway className={ICON_CLASS} />,
+  Netlify: <SiNetlify className={ICON_CLASS} />,
+  Postman: <SiPostman className={ICON_CLASS} />,
+  "VS Code": <TbBrandVscode className={ICON_CLASS} />,
+  "IntelliJ IDEA": <SiIntellijidea className={ICON_CLASS} />,
+  Ubuntu: <SiUbuntu className={ICON_CLASS} />,
+  Windows: <FaWindows className={ICON_CLASS} />,
+  Arduino: <SiArduino className={ICON_CLASS} />,
+  RStudio: <SiRstudioide className={ICON_CLASS} />,
+  "Microsoft 365": <FaMicrosoft className={ICON_CLASS} />,
+  Figma: <SiFigma className={ICON_CLASS} />,
 };
 
-// Backward-compatibility export for any existing imports
+// Maintained for backward compatibility if imported elsewhere
 export const skill = skillIcons;
 
-export const skillCategories = [
+const technicalMatrix = [
+  {
+    id: "languages",
+    name: "Languages",
+    skills: ["Python", "Java", "JavaScript", "PHP", "HTML5", "CSS"],
+  },
   {
     id: "ai-ml",
     name: "AI / Machine Learning",
     skills: [
-      "Python",
       "TensorFlow",
       "scikit-learn",
+      "CatBoost",
+      "XGBoost",
       "Pandas",
       "NumPy",
-      "XGBoost",
-      "CatBoost",
       "Matplotlib",
       "Seaborn",
       "Gemini API",
@@ -138,14 +142,9 @@ export const skillCategories = [
     ],
   },
   {
-    id: "languages",
-    name: "Languages",
-    skills: ["Python", "Java", "JavaScript", "PHP", "HTML5", "CSS"],
-  },
-  {
     id: "frontend",
     name: "Frontend",
-    skills: ["React", "React Native", "Vite", "Expo", "Tailwind CSS", "CSS"],
+    skills: ["React", "React Native", "Tailwind CSS", "Vite", "Expo"],
   },
   {
     id: "backend",
@@ -171,89 +170,48 @@ export const skillCategories = [
     name: "Tools & Cloud",
     skills: [
       "Git",
+      "Ubuntu",
       "Vercel",
       "Railway",
       "Netlify",
       "Postman",
-      "VS Code",
-      "IntelliJ IDEA",
-      "Ubuntu",
       "Figma",
-      "PayHere",
       "Google Maps API",
+      "PayHere",
     ],
   },
 ];
 
-import { Reveal } from "@/components/Reveal";
-
 export const Skills = () => {
-  const [activeTab, setActiveTab] = useState("all");
-
-  const displayedCategories =
-    activeTab === "all"
-      ? skillCategories
-      : skillCategories.filter((c) => c.id === activeTab);
-
   return (
-    <div className="space-y-8">
-      {/* Category Tabs */}
-      <Reveal delay={100}>
-        <div className="flex flex-wrap items-center justify-center gap-2">
-          <button
-            onClick={() => setActiveTab("all")}
-            className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
-              activeTab === "all"
-                ? "bg-primary text-white shadow-md shadow-primary/25"
-                : "bg-surface/80 text-muted-foreground hover:text-foreground hover:bg-muted border border-white/5"
-            }`}
-          >
-            All Skills
-          </button>
-          {skillCategories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveTab(cat.id)}
-              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
-                activeTab === cat.id
-                  ? "bg-primary text-white shadow-md shadow-primary/25"
-                  : "bg-surface/80 text-muted-foreground hover:text-foreground hover:bg-muted border border-white/5"
-              }`}
-            >
-              {cat.name}
-            </button>
-          ))}
-        </div>
-      </Reveal>
-
-      {/* Categorized Skills Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {displayedCategories.map((category, idx) => (
-          <Reveal key={category.id} delay={120 + idx * 80}>
-            <div className="glass-card rounded-2xl p-5 border border-white/5 hover:border-primary/30 transition-all duration-300 h-full">
-              <div className="flex items-center justify-between mb-4 pb-2 border-b border-white/5">
-                <h4 className="text-sm font-semibold text-foreground tracking-wide">
-                  {category.name}
-                </h4>
-                <span className="text-xs text-muted-foreground bg-surface px-2.5 py-0.5 rounded-full border border-white/5 font-mono">
-                  {category.skills.length}
-                </span>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skillName) => (
-                  <div
-                    key={skillName}
-                    className="tech-pill flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium cursor-default"
-                  >
-                    <span className="shrink-0">{skillIcons[skillName] || null}</span>
-                    <span>{skillName}</span>
-                  </div>
-                ))}
-              </div>
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+      {technicalMatrix.map((category, idx) => (
+        <Reveal key={category.id} delay={100 + idx * 50}>
+          <div className="flex flex-col">
+            {/* Category Header */}
+            <div className="border-b border-border pb-3 mb-4">
+              <h3 className="text-xs font-mono font-medium tracking-widest uppercase text-muted-foreground">
+                {category.name}
+              </h3>
             </div>
-          </Reveal>
-        ))}
-      </div>
+            
+            {/* Skills List */}
+            <div className={`gap-x-6 gap-y-2.5 ${category.skills.length > 6 ? "grid grid-cols-1 sm:grid-cols-2" : "flex flex-col"}`}>
+              {category.skills.map((skillName) => (
+                <div
+                  key={skillName}
+                  className="group flex items-center gap-3 py-1 cursor-default"
+                >
+                  <span className="shrink-0">{skillIcons[skillName]}</span>
+                  <span className="text-[14px] text-foreground font-medium group-hover:text-primary transition-colors">
+                    {skillName}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+      ))}
     </div>
   );
 };

@@ -1,127 +1,138 @@
 import { useState } from "react";
 import {
+  BrainCircuit,
   ExternalLink,
-  ChevronDown,
-  FolderGit2,
-  Sparkles,
-  Layers,
+  LayoutGrid,
+  Layers3,
+  Smartphone,
 } from "lucide-react";
-import {
-  FaGithub,
-  FaReact,
-  FaNodeJs,
-  FaJava,
-  FaPython,
-  FaCss3Alt,
-  FaCreditCard,
-  FaChartLine,
-  FaChartBar,
-} from "react-icons/fa6";
-import {
-  SiVite,
-  SiExpo,
-  SiExpress,
-  SiFastapi,
-  SiSpringboot,
-  SiSpringsecurity,
-  SiThymeleaf,
-  SiTensorflow,
-  SiScikitlearn,
-  SiPandas,
-  SiNumpy,
-  SiStreamlit,
-  SiMysql,
-  SiMongodb,
-  SiJsonwebtokens,
-  SiGooglegemini,
-  SiVercel,
-  SiGooglemaps,
-} from "react-icons/si";
-import {
-  TbBrandReactNative,
-  TbCpu,
-  TbBroadcast,
-  TbBinaryTree,
-} from "react-icons/tb";
+import { FaGithub } from "react-icons/fa6";
+import { Reveal } from "@/components/Reveal";
 
-const tagIcons = {
-  React: <FaReact className="text-cyan-400 w-3.5 h-3.5" />,
-  "React Native": <TbBrandReactNative className="text-sky-400 w-3.5 h-3.5" />,
-  Vite: <SiVite className="text-purple-400 w-3.5 h-3.5" />,
-  Expo: <SiExpo className="text-white w-3.5 h-3.5" />,
-  Express: <SiExpress className="text-gray-300 w-3.5 h-3.5" />,
-  FastAPI: <SiFastapi className="text-teal-400 w-3.5 h-3.5" />,
-  "Node.js": <FaNodeJs className="text-green-500 w-3.5 h-3.5" />,
-  Java: <FaJava className="text-red-400 w-3.5 h-3.5" />,
-  "Spring Boot": <SiSpringboot className="text-green-500 w-3.5 h-3.5" />,
-  "Spring Security": <SiSpringsecurity className="text-emerald-400 w-3.5 h-3.5" />,
-  Thymeleaf: <SiThymeleaf className="text-emerald-500 w-3.5 h-3.5" />,
-  Python: <FaPython className="text-yellow-400 w-3.5 h-3.5" />,
-  TensorFlow: <SiTensorflow className="text-orange-500 w-3.5 h-3.5" />,
-  "scikit-learn": <SiScikitlearn className="text-amber-500 w-3.5 h-3.5" />,
-  Pandas: <SiPandas className="text-blue-400 w-3.5 h-3.5" />,
-  NumPy: <SiNumpy className="text-sky-400 w-3.5 h-3.5" />,
-  XGBoost: <TbBinaryTree className="text-yellow-400 w-3.5 h-3.5" />,
-  CatBoost: <TbBinaryTree className="text-amber-400 w-3.5 h-3.5" />,
-  Matplotlib: <FaChartLine className="text-blue-300 w-3.5 h-3.5" />,
-  Seaborn: <FaChartBar className="text-teal-300 w-3.5 h-3.5" />,
-  Streamlit: <SiStreamlit className="text-red-400 w-3.5 h-3.5" />,
-  MySQL: <SiMysql className="text-sky-400 w-3.5 h-3.5" />,
-  MongoDB: <SiMongodb className="text-green-500 w-3.5 h-3.5" />,
-  JWT: <SiJsonwebtokens className="text-pink-400 w-3.5 h-3.5" />,
-  CSS: <FaCss3Alt className="text-blue-400 w-3.5 h-3.5" />,
-  "Gemini API": <SiGooglegemini className="text-indigo-400 w-3.5 h-3.5" />,
-  PayHere: <FaCreditCard className="text-amber-400 w-3.5 h-3.5" />,
-  "Groq SDK": <TbCpu className="text-orange-400 w-3.5 h-3.5" />,
-  SSE: <TbBroadcast className="text-cyan-300 w-3.5 h-3.5" />,
-  "Google Maps API": <SiGooglemaps className="text-red-400 w-3.5 h-3.5" />,
-  Vercel: <SiVercel className="text-slate-200 w-3.5 h-3.5" />,
-};
+/* =========================================================
+   PROJECT DATA
+========================================================= */
 
-const allProjects = [
+const projects = [
   {
-    id: 1,
+    id: "ncc-ecare",
+    number: "01",
     title: "NCC eCare Platform",
-    category: "AI & Full-Stack",
-    badge: "Client Project",
-    featured: true,
+    category: "Full-Stack AI Integration",
+    areas: ["fullstack"],
     description:
-      "A client-based smart e-channeling and healthcare literacy platform for Narammala Channeling Center. Features symptom-based medical specialist recommendations and an AI-powered medical report explainer using OCR and Gemini LLM.",
+      "A client-based smart e-channeling and healthcare literacy platform for Narammala Channeling Center. Features symptom-based medical specialist recommendations and an AI-powered medical report explainer using Gemini LLM.",
+    engineering:
+      "Decoupled frontend/backend architecture handling external LLM calls and secure local payment processing via PayHere.",
+    integration: "Includes the Disease Prediction ML system →",
+    metric: null,
     image: "/c.png",
     tags: [
       "React",
       "FastAPI",
-      "Express",
       "Node.js",
       "MySQL",
       "Gemini API",
       "PayHere",
-      "Vercel",
     ],
     liveUrl: "https://nccecare.vercel.app",
-    githubUrl: "https://github.com/JaniduKasuntha/NCC-eCare-Platform",
-  },
-  {
-    id: 2,
-    title: "Genie ChatBot AI",
-    category: "AI / LLM",
-    badge: "AI Assistant",
+    githubUrl:
+      "https://github.com/JaniduKasuntha/NCC-eCare-Platform",
     featured: true,
-    description:
-      "A low-latency AI conversational assistant delivering real-time streaming completions via Server-Sent Events (SSE), built with token optimization, client-disconnect handling, and Groq SDK LLM integration.",
-    image: "/g.png",
-    tags: ["React", "Vite", "Node.js", "Groq SDK", "SSE", "Vercel"],
-    liveUrl: "https://groq-gini-chat-bot.vercel.app",
-    githubUrl: "https://github.com/JaniduKasuntha/Groq_Gini_ChatBot",
   },
+
   {
-    id: 3,
+    id: "genie",
+    number: "02",
+    title: "Genie ChatBot AI",
+    category: "Real-time Streaming LLM",
+    areas: ["ai-ml"],
+    description:
+      "A low-latency conversational AI assistant focusing on rapid response delivery and token optimization.",
+    engineering:
+      "Streams LLM completions to the React client using Server-Sent Events (SSE). Built with custom disconnect handling to prevent hanging network requests.",
+    integration: null,
+    metric: null,
+    image: "/g.png",
+    tags: [
+      "React",
+      "Node.js",
+      "Groq SDK",
+      "SSE",
+      "Vite",
+      "Vercel",
+    ],
+    liveUrl: "https://groq-gini-chat-bot.vercel.app",
+    githubUrl:
+      "https://github.com/JaniduKasuntha/Groq_Gini_ChatBot",
+    featured: true,
+  },
+
+  {
+    id: "disease-prediction",
+    number: "03",
+    title: "Disease Prediction System ML",
+    category: "Machine Learning",
+    areas: ["ai-ml"],
+    description:
+      "Multi-disease classification model taking patient symptoms as input and processing the data through class-balancing pipelines.",
+    engineering:
+      "Built and evaluated an XGBoost-based classification pipeline using large-scale clinical records and preprocessing workflows.",
+    integration: null,
+    metric: "400,000+ records evaluated · 92% F1 score",
+    image: "/p.png",
+    tags: [
+      "Python",
+      "XGBoost",
+      "scikit-learn",
+      "Pandas",
+      "NumPy",
+    ],
+    liveUrl:
+      "https://nccecare.vercel.app/ecare/smart-doc-suggestion",
+    githubUrl:
+      "https://github.com/JaniduKasuntha/NCC-eCare-Platform",
+    featured: false,
+  },
+
+  {
+    id: "heart-disease",
+    number: "04",
+    title: "Heart Disease Risk Prediction ML",
+    category: "Machine Learning",
+    areas: ["ai-ml"],
+    description:
+      "Diagnostic pipeline predicting heart disease risk based on a balanced clinical dataset. Multiple machine learning architectures were evaluated before model selection.",
+    engineering:
+      "Developed a preprocessing, feature engineering, model evaluation, and prediction pipeline with CatBoost used for the final model.",
+    integration: null,
+    metric: "75,000+ patient records · 98% prediction accuracy",
+    image: "/t.png",
+    tags: [
+      "Python",
+      "CatBoost",
+      "TensorFlow",
+      "scikit-learn",
+      "Pandas",
+    ],
+    liveUrl: null,
+    githubUrl:
+      "https://github.com/JaniduKasuntha/Heart-Disease-AI",
+    featured: false,
+  },
+
+  {
+    id: "campus-bites",
+    number: "05",
     title: "CampusBites Mobile App",
     category: "Mobile & Full-Stack",
-    badge: "Mobile App",
-    featured: true,
+    areas: ["mobile", "fullstack"],
     description:
-      "A multi-role mobile application streamlining campus meal pre-orders and vendor operations for university students, featuring digital food menus, real-time status tracking, support tickets, and vendor reviews.",
+      "A multi-role mobile application streamlining campus meal pre-orders and vendor operations, featuring digital food menus and real-time status tracking.",
+    engineering:
+      "Built a React Native and Expo mobile frontend connected to a Node.js and MongoDB backend with authentication and multi-role application flows.",
+    integration: null,
+    metric: null,
     image: "/a.png",
     tags: [
       "React Native",
@@ -129,244 +140,490 @@ const allProjects = [
       "Node.js",
       "MongoDB",
       "JWT",
-      "Google Maps API",
-      "Vercel",
     ],
     liveUrl: "https://campus-bites-mobile-app.vercel.app",
-    githubUrl: "https://github.com/JaniduKasuntha/CampusBites-Mobile-App",
+    githubUrl:
+      "https://github.com/JaniduKasuntha/CampusBites-Mobile-App",
+    featured: false,
   },
+
   {
-    id: 4,
+    id: "bill-reminder",
+    number: "06",
     title: "University Bill & Event Reminder System",
-    category: "Backend & Systems",
-    badge: "Enterprise Web",
-    featured: true,
+    category: "Full-Stack + Backend",
+    areas: ["fullstack"],
     description:
-      "A secure full-stack dashboard featuring role-based access control (RBAC), automated scheduled email reminders for academic billing cycles, and campus event notifications built with Spring Security and MySQL.",
+      "A secure full-stack dashboard featuring role-based access control, automated scheduled email reminders for academic billing cycles, and campus event notifications.",
+    engineering:
+      "Implemented backend business logic with Spring Boot and Spring Security, including role-based authorization, scheduled notifications, and MySQL persistence.",
+    integration: null,
+    metric: null,
     image: "/f.png",
-    tags: ["Java", "Spring Boot", "Spring Security", "Thymeleaf", "MySQL"],
+    tags: [
+      "Java",
+      "Spring Boot",
+      "Spring Security",
+      "MySQL",
+      "Thymeleaf",
+    ],
     liveUrl: null,
     githubUrl:
       "https://github.com/JaniduKasuntha/Web-based-Bill-and-Event-Reminder-System",
-  },
-  {
-    id: 5,
-    title: "Heart Disease Risk Prediction ML",
-    category: "AI / ML",
-    badge: "Machine Learning",
     featured: false,
-    description:
-      "Machine learning diagnostic pipeline predicting heart disease risk based on a balanced clinical dataset of 75,000+ patient records. Evaluated multiple architectures and deployed CatBoost with 98% prediction accuracy.",
-    image: "/t.png",
-    tags: [
-      "Python",
-      "TensorFlow",
-      "scikit-learn",
-      "Pandas",
-      "NumPy",
-      "CatBoost",
-      "Matplotlib",
-      "Seaborn",
-      "Streamlit",
-    ],
-    liveUrl: null,
-    githubUrl: "https://github.com/JaniduKasuntha/Heart-Disease-AI",
-  },
-  {
-    id: 6,
-    title: "Disease Prediction System ML",
-    category: "AI / ML",
-    badge: "Machine Learning",
-    featured: false,
-    description:
-      "Multi-disease classification model taking patient symptoms as input. Evaluated over 400,000+ records across preprocessing and class-balancing pipelines; achieved 92% accuracy/F1 score with an optimized XGBoost model.",
-    image: "/p.png",
-    tags: [
-      "Python",
-      "scikit-learn",
-      "Pandas",
-      "NumPy",
-      "XGBoost",
-      "Matplotlib",
-      "Seaborn",
-      "Streamlit",
-      "React",
-    ],
-    liveUrl: "https://nccecare.vercel.app/ecare/smart-doc-suggestion",
-    githubUrl: "https://github.com/JaniduKasuntha/NCC-eCare-Platform",
   },
 ];
 
-import { Reveal } from "@/components/Reveal";
+/* =========================================================
+   FILTERS
+========================================================= */
+
+const projectFilters = [
+  {
+    id: "all",
+    label: "All Projects",
+    icon: LayoutGrid,
+  },
+  {
+    id: "ai-ml",
+    label: "AI / ML",
+    icon: BrainCircuit,
+  },
+  {
+    id: "fullstack",
+    label: "Full Stack",
+    icon: Layers3,
+  },
+  {
+    id: "mobile",
+    label: "Mobile",
+    icon: Smartphone,
+  },
+];
+
+/* =========================================================
+   PROJECT LINKS
+========================================================= */
+
+const ActionLinks = ({ githubUrl, liveUrl }) => {
+  return (
+    <div className="flex flex-wrap items-center gap-5 pt-1">
+      {githubUrl && (
+        <a
+          href={githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="
+            group flex items-center gap-1.5
+            text-[13px] font-medium text-muted-foreground
+            transition-colors hover:text-foreground
+          "
+        >
+          <FaGithub className="h-4 w-4" />
+          <span>GitHub ↗</span>
+        </a>
+      )}
+
+      {liveUrl && (
+        <a
+          href={liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="
+            group flex items-center gap-1.5
+            text-[13px] font-medium text-primary
+            transition-colors hover:text-primary-hover
+          "
+        >
+          <ExternalLink className="h-4 w-4" />
+          <span>Live Demo ↗</span>
+        </a>
+      )}
+    </div>
+  );
+};
+
+/* =========================================================
+   PROJECTS SECTION
+========================================================= */
 
 export const Projects = () => {
-  const [filter, setFilter] = useState("all");
-  const [showAll, setShowAll] = useState(false);
+  const [activeFilter, setActiveFilter] = useState("all");
 
-  const categories = [
-    { id: "all", label: "All Projects" },
-    { id: "ai", label: "AI & Machine Learning" },
-    { id: "web", label: "Full-Stack Web" },
-    { id: "mobile", label: "Mobile Apps" },
-  ];
-
-  const filteredProjects = allProjects.filter((p) => {
-    if (filter === "ai") return p.category.includes("AI") || p.category.includes("ML");
-    if (filter === "web") return p.category.includes("Full-Stack") || p.category.includes("Backend") || p.category.includes("Web");
-    if (filter === "mobile") return p.category.includes("Mobile");
-    return true;
-  });
-
-  const visibleProjects = showAll ? filteredProjects : filteredProjects.slice(0, 4);
+  const visibleProjects = projects.filter(
+    (project) =>
+      activeFilter === "all" ||
+      project.areas.includes(activeFilter)
+  );
 
   return (
-    <section id="projects" className="py-24 md:py-32 relative overflow-hidden bg-background/50">
-      {/* Background Ambience */}
-      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
+    <section
+      id="projects"
+      className="border-b border-border py-20 lg:py-24"
+    >
+      <div className="container mx-auto max-w-7xl px-6">
 
-      <div className="container mx-auto max-w-7xl px-6 relative z-10">
-        {/* Section Header */}
-        <Reveal className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-xs font-mono text-primary uppercase tracking-wider">
-            <FolderGit2 className="w-3.5 h-3.5" />
-            <span>Featured Portfolio</span>
+        {/* =====================================================
+            SECTION HEADING
+        ===================================================== */}
+
+        <Reveal>
+          <div className="mb-16 lg:mb-20">
+            <span
+              className="
+                font-mono text-[18px] font-semibold
+                uppercase tracking-widest text-primary/80
+                md:text-[20px]
+              "
+            >
+              05 / Projects
+            </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-            Engineered with <span className="text-primary glow-text">Precision & Impact</span>
-          </h2>
-          <p className="text-base text-muted-foreground">
-            A curated collection of intelligent machine learning pipelines, production full-stack systems, and cross-platform applications.
-          </p>
         </Reveal>
 
-        {/* Filter Tabs */}
-        <Reveal delay={100}>
-          <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => {
-                  setFilter(cat.id);
-                  setShowAll(true);
-                }}
-                className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
-                  filter === cat.id
-                    ? "bg-primary text-white shadow-md shadow-primary/25"
-                    : "bg-surface/80 text-muted-foreground hover:text-foreground hover:bg-muted border border-white/5"
-                }`}
+        {/* =====================================================
+            PROJECT FILTERS
+        ===================================================== */}
+
+        <Reveal delay={60}>
+          <div className="mb-12 border-b border-border">
+            <div
+              className="
+                flex flex-wrap items-center
+                gap-x-7 sm:gap-x-9
+              "
+            >
+              {projectFilters.map((filter) => {
+                const Icon = filter.icon;
+                const isActive =
+                  activeFilter === filter.id;
+
+                return (
+                  <button
+                    key={filter.id}
+                    type="button"
+                    onClick={() =>
+                      setActiveFilter(filter.id)
+                    }
+                    aria-pressed={isActive}
+                    className={`
+                      group relative
+                      flex items-center gap-2
+                      pb-4
+                      text-[12px] font-medium
+                      transition-colors duration-200
+
+                      focus-visible:outline-none
+                      focus-visible:text-primary
+
+                      ${
+                        isActive
+                          ? "text-primary"
+                          : `
+                            text-muted-foreground
+                            hover:text-foreground
+                          `
+                      }
+                    `}
+                  >
+                    <Icon
+                      className={`
+                        h-4 w-4
+                        transition-colors duration-200
+                        ${
+                          isActive
+                            ? "text-primary"
+                            : `
+                              text-muted-foreground
+                              group-hover:text-primary
+                            `
+                        }
+                      `}
+                    />
+
+                    <span>{filter.label}</span>
+
+                    {/* Active underline */}
+                    <span
+                      className={`
+                        absolute
+                        -bottom-px left-0
+                        h-[2px]
+                        rounded-full
+                        bg-primary
+                        transition-all duration-300
+
+                        ${
+                          isActive
+                            ? "w-full opacity-100"
+                            : "w-0 opacity-0"
+                        }
+                      `}
+                    />
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </Reveal>
+
+        {/* =====================================================
+            PROJECT LIST
+        ===================================================== */}
+
+        <div className="divide-y divide-border">
+          {visibleProjects.map((project, index) => {
+            const imageOnRight = index % 2 !== 0;
+
+            return (
+              <Reveal
+                key={project.id}
+                delay={100}
               >
-                {cat.label}
-              </button>
-            ))}
-          </div>
-        </Reveal>
+                <article
+                  className={`
+                    grid items-center
+                    gap-8
+                    lg:grid-cols-12
+                    lg:gap-12
+                    xl:gap-16
 
-        {/* Project Cards Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {visibleProjects.map((project, index) => (
-            <Reveal
-              key={project.id}
-              delay={index * 120}
-              className="glass-card rounded-2xl overflow-hidden border border-white/5 hover:border-primary/40 transition-all duration-300 flex flex-col group shadow-xl shadow-black/20"
-            >
-              {/* Project Screenshot Container with Zoom on Hover */}
-              <div className="relative overflow-hidden aspect-video bg-surface/80">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent opacity-80" />
+                    ${
+                      project.featured
+                        ? "py-16 lg:py-24"
+                        : "py-14 lg:py-20"
+                    }
+                  `}
+                >
 
-                {/* Top Badges */}
-                <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-strong text-[11px] font-mono text-primary border border-primary/30 shadow-md">
-                    <Sparkles className="w-3.5 h-3.5" />
-                    {project.badge}
-                  </span>
-                  <span className="text-[11px] font-mono text-slate-300 glass-strong px-2.5 py-1 rounded-full border border-white/10">
-                    {project.category}
-                  </span>
-                </div>
-              </div>
+                  {/* =================================================
+                      PROJECT IMAGE
+                  ================================================= */}
 
-              {/* Project Body */}
-              <div className="p-6 sm:p-7 flex flex-col flex-grow justify-between space-y-5">
-                <div className="space-y-3">
-                  <h3 className="text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
+                  <div
+                    className={`
+                      lg:col-span-7
 
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
+                      ${
+                        imageOnRight
+                          ? "lg:order-2"
+                          : "lg:order-1"
+                      }
+                    `}
+                  >
+                    <div
+                      className="
+                        group relative overflow-hidden
+                        rounded-xl border border-border
+                        bg-surface-1
+                      "
+                    >
+                      <img
+                        src={project.image}
+                        alt={`${project.title} project interface`}
+                        loading={
+                          index > 1 ? "lazy" : "eager"
+                        }
+                        className="
+                          block h-auto w-full
+                          transition-transform
+                          duration-500
+                          group-hover:scale-[1.01]
+                        "
+                      />
+                    </div>
+                  </div>
 
-                <div className="space-y-5">
-                  {/* Technology Tags */}
-                  <div className="flex flex-wrap gap-1.5 pt-1">
-                    {project.tags.map((tag, idx) => (
+                  {/* =================================================
+                      PROJECT CONTENT
+                  ================================================= */}
+
+                  <div
+                    className={`
+                      flex flex-col justify-center
+                      lg:col-span-5
+
+                      ${
+                        imageOnRight
+                          ? "lg:order-1"
+                          : "lg:order-2"
+                      }
+                    `}
+                  >
+
+                    {/* Metadata */}
+
+                    <div
+                      className="
+                        mb-4 flex items-center gap-2
+                        font-mono text-[11px]
+                        uppercase tracking-wider
+                        text-muted-foreground
+                      "
+                    >
+                      <span>{project.number}</span>
+
+                      <span className="h-px w-4 bg-border" />
+
+                      <span>{project.category}</span>
+
+                      {project.featured && (
+                        <>
+                          <span
+                            className="
+                              mx-1 h-1 w-1
+                              rounded-full
+                              bg-primary/60
+                            "
+                          />
+
+                          <span className="text-primary/80">
+                            Featured
+                          </span>
+                        </>
+                      )}
+                    </div>
+
+                    {/* Project Title */}
+
+                    <h3
+                      className={`
+                        font-semibold
+                        tracking-tight
+                        text-foreground
+
+                        ${
+                          project.featured
+                            ? "text-2xl sm:text-3xl"
+                            : "text-xl sm:text-2xl"
+                        }
+                      `}
+                    >
+                      {project.title}
+                    </h3>
+
+                    {/* Description */}
+
+                    <p
+                      className="
+                        mt-4
+                        text-[14px]
+                        leading-relaxed
+                        text-muted-foreground
+                        sm:text-[15px]
+                      "
+                    >
+                      {project.description}
+                    </p>
+
+                    {/* Integration */}
+
+                    {project.integration && (
+                      <p
+                        className="
+                          mt-3
+                          text-[13px]
+                          font-medium
+                          text-primary
+                        "
+                      >
+                        {project.integration}
+                      </p>
+                    )}
+
+                    {/* Metric */}
+
+                    {project.metric && (
+                      <div className="mt-5">
+                        <span
+                          className="
+                            inline-block
+                            rounded-md
+                            border border-border
+                            bg-surface-1
+                            px-2.5 py-1.5
+                            font-mono
+                            text-[11px]
+                            text-foreground/80
+                            sm:text-[12px]
+                          "
+                        >
+                          {project.metric}
+                        </span>
+                      </div>
+                    )}
+
+                    {/* Engineering Implementation */}
+
+                    <div className="mt-6 border-t border-border pt-5">
                       <span
-                        key={idx}
-                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium bg-surface/90 text-slate-300 border border-white/5 hover:border-primary/30 transition-colors"
+                        className="
+                          mb-2 block
+                          font-mono
+                          text-[11px]
+                          uppercase
+                          tracking-widest
+                          text-muted-foreground
+                        "
                       >
-                        {tagIcons[tag] || null}
-                        <span>{tag}</span>
+                        Engineering Implementation
                       </span>
-                    ))}
-                  </div>
 
-                  {/* Action Buttons (GitHub + Live Demo) */}
-                  <div className="flex items-center gap-3 pt-3 border-t border-white/5">
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs sm:text-sm font-semibold shadow-md shadow-primary/20 transition-all hover:scale-[1.02] active:scale-95"
+                      <p
+                        className="
+                          text-[13px]
+                          leading-relaxed
+                          text-foreground/85
+                          sm:text-[14px]
+                        "
                       >
-                        <span>Live Demo</span>
-                        <ExternalLink className="w-3.5 h-3.5" />
-                      </a>
-                    )}
+                        {project.engineering}
+                      </p>
+                    </div>
 
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-surface hover:bg-muted text-slate-200 border border-white/10 hover:border-primary/40 text-xs sm:text-sm font-medium transition-all hover:scale-[1.02] active:scale-95"
+                    {/* Technology Stack */}
+
+                    <div className="mt-5 border-t border-border pt-5">
+                      <span
+                        className="
+                          mb-2 block
+                          font-mono
+                          text-[11px]
+                          uppercase
+                          tracking-widest
+                          text-muted-foreground
+                        "
                       >
-                        <FaGithub className="w-4 h-4 text-slate-200" />
-                        <span>Source Code</span>
-                      </a>
-                    )}
+                        Stack
+                      </span>
+
+                      <p
+                        className="
+                          font-mono
+                          text-[11px]
+                          leading-relaxed
+                          text-muted-foreground
+                          sm:text-[12px]
+                        "
+                      >
+                        {project.tags.join(" · ")}
+                      </p>
+                    </div>
+
+                    {/* GitHub / Live Demo */}
+
+                    <div className="mt-5">
+                      <ActionLinks
+                        githubUrl={project.githubUrl}
+                        liveUrl={project.liveUrl}
+                      />
+                    </div>
                   </div>
-                </div>
-              </div>
-            </Reveal>
-          ))}
+                </article>
+              </Reveal>
+            );
+          })}
         </div>
-
-        {/* Expand / Collapse Projects Toggle */}
-        {filteredProjects.length > 4 && (
-          <Reveal delay={150} className="flex justify-center mt-12">
-            <button
-              onClick={() => setShowAll(!showAll)}
-              className="group inline-flex items-center gap-2 px-6 py-3 rounded-full glass border border-primary/30 hover:border-primary text-sm font-semibold text-foreground hover:text-primary transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 cursor-pointer"
-            >
-              <Layers className="w-4 h-4 text-primary" />
-              <span>{showAll ? "Show Featured Projects" : `View All Projects (${filteredProjects.length})`}</span>
-              <ChevronDown
-                className={`w-4 h-4 text-primary transition-transform duration-300 ${
-                  showAll ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-          </Reveal>
-        )}
       </div>
     </section>
   );

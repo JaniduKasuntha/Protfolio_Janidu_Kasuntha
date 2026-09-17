@@ -1,3 +1,16 @@
+/**
+ * Button — Unified 3-tier button system
+ *
+ * Variants:
+ *   primary   → Solid teal accent, dark text, high emphasis
+ *   secondary → Solid dark surface, subtle border, medium emphasis
+ *   ghost     → Transparent, muted text, low emphasis
+ *
+ * Sizes:
+ *   sm        → Compact (nav CTAs, inline actions)
+ *   default   → Standard
+ *   lg        → Large (hero-level CTAs)
+ */
 export const Button = ({
   children,
   size = "default",
@@ -6,26 +19,24 @@ export const Button = ({
   ...props
 }) => {
   const baseClasses =
-    "relative inline-flex items-center justify-center font-medium rounded-full transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer";
+    "relative inline-flex items-center justify-center font-medium rounded-lg transition-all duration-150 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer";
 
   const sizeClasses = {
-    sm: "px-4 py-2 text-xs md:text-sm",
-    default: "px-6 py-3 text-sm md:text-base",
-    lg: "px-8 py-4 text-base md:text-lg",
+    sm: "px-3.5 py-2 text-xs md:text-sm",
+    default: "px-5 py-2.5 text-sm md:text-base",
+    lg: "px-7 py-3.5 text-base md:text-lg",
   };
 
   const variantClasses = {
     primary:
-      "bg-primary hover:bg-primary-hover text-white shadow-lg shadow-primary/20 hover:shadow-primary/30 hover:scale-[1.02]",
+      "bg-primary hover:bg-primary-hover text-primary-foreground font-semibold",
     secondary:
-      "bg-surface hover:bg-muted text-foreground border border-border/80 hover:border-primary/40",
-    outline:
-      "bg-transparent hover:bg-primary/10 text-foreground border border-border hover:border-primary/50 hover:text-primary",
+      "bg-surface-1 hover:bg-surface-2 text-foreground border border-border hover:border-border-muted",
     ghost:
-      "bg-transparent hover:bg-surface text-muted-foreground hover:text-foreground",
+      "bg-transparent hover:bg-surface-1 text-muted-foreground hover:text-foreground",
   };
 
-  const classes = `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`;
+  const classes = `${baseClasses} ${sizeClasses[size] || sizeClasses.default} ${variantClasses[variant] || variantClasses.primary} ${className}`;
 
   return (
     <button className={classes} {...props}>

@@ -1,345 +1,481 @@
 import { useState } from "react";
 import {
-  Quote,
+  ArrowLeft,
+  ArrowRight,
   ExternalLink,
-  ChevronLeft,
-  ChevronRight,
   Trophy,
-  MessageSquareHeart,
-  Calendar,
-  Building2,
-  Award,
-  Sparkles,
 } from "lucide-react";
 import { FaLinkedin } from "react-icons/fa6";
+import { Reveal } from "@/components/Reveal";
+
+/* =========================================================
+   ACHIEVEMENTS
+   ========================================================= */
 
 const achievements = [
-  {
-    id: 1,
-    title: "Client Production Launch — NCC eCare Platform",
-    organization: "Narammala Channeling Center",
-    date: "2024",
-    description:
-      "Successfully engineered and deployed the full-stack medical appointment and AI report analysis platform to production, enabling seamless doctor channeling and automated report explanations.",
-    badge: "Client Project",
-    link: "https://www.linkedin.com/posts/janidu-kasuntha_we-are-proud-to-announce-the-successful-completion-activity-7457426036067053568-3YD6",
-    tags: ["Full-Stack", "AI Deployment", "Client Delivery"],
-  },
-  {
-    id: 2,
-    title: "CampusBites Multi-Role Platform Release",
-    organization: "SLIIT Software Engineering Initiative",
-    date: "2024",
-    description:
-      "Designed and deployed the end-to-end mobile meal pre-ordering and vendor management application with real-time tracking, receiving positive feedback from students and staff.",
-    badge: "Mobile Architecture",
-    link: "https://www.linkedin.com/posts/janidu-kasuntha_fullstackdevelopment-reactnative-nodejs-activity-7457414708610879488-DiHB",
-    tags: ["React Native", "Expo", "System Design"],
-  },
-  {
-    id: 3,
-    title: "High-Accuracy Medical ML Pipeline Research",
-    organization: "SLIIT AI Project Showcase",
-    date: "2024",
-    description:
-      "Trained and evaluated CatBoost & XGBoost predictive models on 400k+ clinical data records, achieving 98% accuracy on balanced heart disease benchmarks.",
-    badge: "AI Research",
-    link: "https://github.com/JaniduKasuntha/Heart-Disease-AI",
-    tags: ["CatBoost", "Data Science", "Optimization"],
-  },
   {
     id: 4,
     title: "Advanced Professional English Certification",
     organization: "British Council Sri Lanka",
     date: "2019",
     description:
-      "Awarded certification in professional English communications, technical presentation, and collaborative dialogue.",
-    badge: "Certification",
+      "Completed professional English communication training through the British Council Sri Lanka.",
     link: null,
-    tags: ["Communication", "Professional Fluency"],
+  },
+  {
+    id: 5,
+    title: "Code Night N2 — Linux Session Leaderboard Topper",
+    organization: "SLIIT Mozilla Campus Club",
+    date: "2026",
+    description:
+      "Recognized as one of the leaderboard toppers at the Code Night N2 Linux Session.",
+    link: "https://lnkd.in/p/gd_PtKvz",
+    image:"/codenightceti.png"
   },
 ];
+
+/* =========================================================
+   TESTIMONIALS / LINKEDIN FEEDBACK
+
+   To add another testimonial later:
+
+   {
+     id: 3,
+     name: "Person Name",
+     role: "LinkedIn Recommendation",
+     image: "/testimonial3.png",
+     link: "https://www.linkedin.com/..."
+   }
+
+   The carousel updates automatically.
+   ========================================================= */
 
 const testimonials = [
   {
     id: 1,
-    name: "Narammala Channeling Center Team",
-    role: "Client & Healthcare Partner",
-    quote:
-      "Janidu demonstrated remarkable technical dedication delivering our e-care platform. His implementation of the AI report explainer and smooth appointment workflows added immense value to our patients.",
-    img: "/nad.png",
+    name: "Nadeesha Malshan",
+    role: "LinkedIn Recommendation / Project Feedback",
+    image: "/nad.png",
     link: "https://www.linkedin.com/posts/janidu-kasuntha_we-are-proud-to-announce-the-successful-completion-activity-7457426036067053568-3YD6",
-    verified: true,
   },
   {
     id: 2,
-    name: "Engineering Peers & Project Collaborators",
-    role: "Full-Stack Development Review",
-    quote:
-      "Working with Janidu on cross-platform mobile architectures is a great experience. He brings precision to state management, clean backend APIs, and consistent attention to detail.",
-    img: "/sud.png",
+    name: "Sudharma Paranavithana",
+    role: "LinkedIn Endorsement / Project Feedback",
+    image: "/sud.png",
     link: "https://www.linkedin.com/posts/janidu-kasuntha_fullstackdevelopment-reactnative-nodejs-activity-7457414708610879488-DiHB",
-    verified: true,
   },
   {
     id: 3,
-    name: "CampusBites Reviewers",
-    role: "User Community & Stakeholders",
-    quote:
-      "The intuitive UI and smooth order tracking made campus meal reservations seamless. Great execution from design to mobile deployment.",
-    img: "/p.png",
-    link: "https://www.linkedin.com/posts/janidu-kasuntha_we-are-proud-to-announce-the-successful-completion-activity-7457426036067053568-3YD6",
-    verified: true,
+    name: "Code night N2 Linux Session",
+    role: "LinkedIn Endorsement / Project Feedback",
+    image: "/codenight.jpeg",
+    link: "https://lnkd.in/p/gd_PtKvz",
   },
 ];
 
-import { Reveal } from "@/components/Reveal";
+/* =========================================================
+   COMPONENT
+   ========================================================= */
 
 export const Testimonials = () => {
-  const [activeTab, setActiveTab] = useState("all"); // 'all' | 'achievements' | 'testimonials'
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
-  const handlePrev = () => {
-    setCurrentTestimonial((prev) =>
-      prev === 0 ? testimonials.length - 1 : prev - 1
+  const testimonial = testimonials[currentTestimonial];
+
+  const nextTestimonial = () => {
+    setCurrentTestimonial((current) =>
+      current === testimonials.length - 1 ? 0 : current + 1
     );
   };
 
-  const handleNext = () => {
-    setCurrentTestimonial((prev) =>
-      prev === testimonials.length - 1 ? 0 : prev + 1
+  const previousTestimonial = () => {
+    setCurrentTestimonial((current) =>
+      current === 0 ? testimonials.length - 1 : current - 1
     );
   };
 
-  const activeReview = testimonials[currentTestimonial];
+  const goToTestimonial = (index) => {
+    setCurrentTestimonial(index);
+  };
 
   return (
-    <section id="testimonials" className="py-24 md:py-32 relative overflow-hidden bg-background">
-      {/* Ambient Lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[500px] bg-primary/5 rounded-full blur-[140px] pointer-events-none" />
+    <section
+      id="testimonials"
+      className="py-16 lg:py-20 border-b border-border"
+    >
+      <div className="container mx-auto max-w-7xl px-6">
 
-      <div className="container mx-auto max-w-7xl px-6 relative z-10">
-        {/* Section Header */}
-        <Reveal className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-xs font-mono text-primary uppercase tracking-wider">
-            <Award className="w-3.5 h-3.5" />
-            <span>Recognition & Feedback</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-            Achievements & <span className="text-primary glow-text">Kind Words</span>
-          </h2>
-          <p className="text-base text-muted-foreground">
-            Proud moments & words that inspire me.
-          </p>
-        </Reveal>
+        {/* =====================================================
+            SECTION TITLE
+        ===================================================== */}
 
-        {/* Category Tabs */}
-        <Reveal delay={100}>
-          <div className="flex justify-center gap-3 mb-14">
-            <button
-              onClick={() => setActiveTab("all")}
-              className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
-                activeTab === "all"
-                  ? "bg-primary text-white shadow-md shadow-primary/25"
-                  : "bg-surface/80 text-muted-foreground hover:text-foreground border border-white/5"
-              }`}
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>All Highlights</span>
-            </button>
-            <button
-              onClick={() => setActiveTab("achievements")}
-              className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
-                activeTab === "achievements"
-                  ? "bg-primary text-white shadow-md shadow-primary/25"
-                  : "bg-surface/80 text-muted-foreground hover:text-foreground border border-white/5"
-              }`}
-            >
-              <Trophy className="w-3.5 h-3.5" />
-              <span>Achievements</span>
-            </button>
-            <button
-              onClick={() => setActiveTab("testimonials")}
-              className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
-                activeTab === "testimonials"
-                  ? "bg-primary text-white shadow-md shadow-primary/25"
-                  : "bg-surface/80 text-muted-foreground hover:text-foreground border border-white/5"
-              }`}
-            >
-              <MessageSquareHeart className="w-3.5 h-3.5" />
-              <span>Kind Words</span>
-            </button>
+        <Reveal>
+          <div className="mb-12 lg:mb-16">
+            <span className="text-[18px] md:text-[20px] font-mono text-primary/80 font-semibold tracking-widest uppercase">
+              06 / Achievements & Kind Words
+            </span>
           </div>
         </Reveal>
 
-        {/* Content Layout */}
-        <div className="grid lg:grid-cols-12 gap-10 items-start">
-          {/* Achievements Column */}
-          {(activeTab === "all" || activeTab === "achievements") && (
-            <div
-              className={`${
-                activeTab === "achievements" ? "lg:col-span-12 max-w-4xl mx-auto" : "lg:col-span-7"
-              } space-y-4`}
-            >
-              <Reveal delay={120} className="flex items-center gap-2 mb-2">
+        {/* =====================================================
+            MAIN GRID
+        ===================================================== */}
+
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-start">
+
+          {/* ===================================================
+              LEFT — ACHIEVEMENTS
+          =================================================== */}
+
+          <div>
+            <Reveal delay={100}>
+              <div className="flex items-center gap-2 mb-8 pb-4 border-b border-border">
                 <Trophy className="w-4 h-4 text-primary" />
-                <h3 className="text-lg font-bold text-foreground">Key Milestones & Recognitions</h3>
-              </Reveal>
 
-              <div className="space-y-4">
-                {achievements.map((item, aIdx) => (
-                  <Reveal key={item.id} delay={140 + aIdx * 100}>
-                    <div className="glass-card rounded-2xl p-5 sm:p-6 border border-white/5 hover:border-primary/40 transition-all duration-300 group shadow-md">
-                      <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                        <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
-                          {item.badge}
-                        </span>
-                        <div className="flex items-center gap-3 text-xs text-muted-foreground font-mono">
-                          <span className="flex items-center gap-1">
-                            <Building2 className="w-3 h-3 text-primary" />
-                            {item.organization}
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <Calendar className="w-3 h-3 text-primary" />
-                            {item.date}
-                          </span>
-                        </div>
-                      </div>
+                <h3 className="text-[13px] md:text-[14px] font-mono text-primary/80 font-semibold uppercase tracking-widest">
+                  Verified Achievements
+                </h3>
+              </div>
+            </Reveal>
 
-                      <h4 className="text-base sm:text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+            <div>
+              {achievements.map((item, index) => (
+                <Reveal key={item.id} delay={120 + index * 40}>
+                  <article className="py-6 border-b border-border/50 group">
+
+                    {/* Title + Date */}
+
+                    <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-2">
+                      <h4 className="text-base font-medium text-foreground group-hover:text-primary transition-colors">
                         {item.title}
                       </h4>
 
-                      <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-2 mb-3">
-                        {item.description}
+                      <span className="text-[11px] font-mono text-muted-foreground shrink-0">
+                        {item.date}
+                      </span>
+                    </div>
+
+                    {/* Organization */}
+
+                    <p className="text-[12px] font-medium text-foreground/80 mb-3">
+                      {item.organization}
+                    </p>
+
+                    {/* Description */}
+
+                    <p className="text-[13px] sm:text-[14px] text-muted-foreground leading-relaxed mb-4">
+                      {item.description}
+                    </p>
+
+                    {/* Achievement Preview */}
+
+                    {item.image && (
+                      <div className="relative inline-flex group/achievement">
+                        <button
+                          type="button"
+                          aria-label={`Preview ${item.title}`}
+                          className="
+                            inline-flex
+                            items-center
+                            gap-2
+                            px-3.5
+                            py-2
+                            rounded-lg
+                            border
+                            border-primary/30
+                            text-[12px]
+                            font-medium
+                            text-primary
+                            hover:bg-primary/10
+                            hover:border-primary/60
+                            transition-all
+                            focus-visible:outline-none
+                            focus-visible:ring-2
+                            focus-visible:ring-primary/50
+                          "
+                        >
+                          View Achievement
+
+                          <Trophy className="w-3.5 h-3.5" />
+                        </button>
+
+                        <div className="pointer-events-none absolute left-full top-1/2 z-10 ml-4 hidden w-130 -translate-y-1/2 rounded-xl border border-border bg-card p-2 opacity-0 shadow-xl transition-opacity duration-200 group-hover/achievement:block group-hover/achievement:opacity-100 group-focus-within/achievement:block group-focus-within/achievement:opacity-100">
+                          <img
+                            src={item.image}
+                            alt={`${item.title} achievement preview`}
+                            className="h-auto max-h-[40rem] w-full rounded-lg object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+
+          {/* ===================================================
+              RIGHT — TESTIMONIALS
+          =================================================== */}
+
+          <div className="lg:sticky lg:top-28">
+
+            <Reveal delay={100}>
+              <h3 className="text-[13px] md:text-[14px] font-mono text-primary/80 font-semibold uppercase tracking-widest mb-8 pb-4 border-b border-border">
+                Feedback & Endorsements
+              </h3>
+            </Reveal>
+
+            <Reveal delay={180}>
+
+              {/* =================================================
+                  TESTIMONIAL CARD
+              ================================================= */}
+
+              <div className="relative w-full max-w-[50 0px] mx-auto rounded-2xl border border-border bg-card/40 overflow-hidden">
+
+                {/* ===============================================
+                    CARD HEADER
+                =============================================== */}
+
+                <div className="flex items-center justify-between px-4 py-3 border-b border-border/70">
+
+                  <div className="flex items-center gap-2.5">
+
+                    <div className="w-8 h-8 rounded-lg border border-primary/30 bg-primary/5 flex items-center justify-center">
+                      <FaLinkedin className="w-4 h-4 text-primary" />
+                    </div>
+
+                    <div>
+                      <p className="text-[12px] font-medium text-foreground">
+                        LinkedIn Feedback
                       </p>
 
-                      <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-white/5">
-                        <div className="flex flex-wrap gap-1.5">
-                          {item.tags.map((tag, tIdx) => (
-                            <span
-                              key={tIdx}
-                              className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-surface text-slate-300 border border-white/5"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-
-                        {item.link && (
-                          <a
-                            href={item.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-white transition-colors"
-                          >
-                            <span>Verify Details</span>
-                            <ExternalLink className="w-3 h-3" />
-                          </a>
-                        )}
-                      </div>
+                      <p className="text-[9px] font-mono tracking-wider text-muted-foreground">
+                        VERIFIED POST
+                      </p>
                     </div>
-                  </Reveal>
-                ))}
-              </div>
-            </div>
-          )}
 
-          {/* Testimonials Column */}
-          {(activeTab === "all" || activeTab === "testimonials") && (
-            <div
-              className={`${
-                activeTab === "testimonials" ? "lg:col-span-12 max-w-2xl mx-auto" : "lg:col-span-5"
-              } space-y-4`}
-            >
-              <Reveal delay={120} className="flex items-center gap-2 mb-2">
-                <MessageSquareHeart className="w-4 h-4 text-primary" />
-                <h3 className="text-lg font-bold text-foreground">Endorsements & Feedback</h3>
-              </Reveal>
-
-              {/* Interactive Testimonial Card */}
-              <Reveal delay={180}>
-                <div className="glass-card rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl relative">
-                  {/* Quote Icon */}
-                  <div className="w-10 h-10 rounded-2xl bg-primary/20 border border-primary/30 flex items-center justify-center text-primary mb-5 shadow-lg shadow-primary/10">
-                    <Quote className="w-5 h-5" />
                   </div>
 
-                  {/* Quote Text */}
-                  <p className="text-sm sm:text-base text-slate-200 italic leading-relaxed mb-6 font-serif">
-                    "{activeReview.quote}"
-                  </p>
+                  <span className="text-[10px] font-mono text-muted-foreground">
+                    {String(currentTestimonial + 1).padStart(2, "0")}
+                    {" / "}
+                    {String(testimonials.length).padStart(2, "0")}
+                  </span>
 
-                  {/* Proof Image / Post Preview */}
-                  {activeReview.img && (
-                    <div className="relative rounded-xl overflow-hidden bg-surface/80 border border-white/5 mb-5 aspect-[16/10]">
-                      <img
-                        src={activeReview.img}
-                        alt={activeReview.name}
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                  )}
-
-                  {/* Author Info */}
-                  <div className="flex items-center justify-between pt-2 border-t border-white/5">
-                    <div>
-                      <h5 className="text-sm sm:text-base font-bold text-foreground">
-                        {activeReview.name}
-                      </h5>
-                      <p className="text-xs text-muted-foreground">{activeReview.role}</p>
-                    </div>
-
-                    {activeReview.link && (
-                      <a
-                        href={activeReview.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full glass border border-primary/30 hover:border-primary text-xs font-semibold text-primary hover:text-white transition-all hover:scale-105"
-                      >
-                        <FaLinkedin className="w-3.5 h-3.5" />
-                        <span>View Post</span>
-                      </a>
-                    )}
-                  </div>
-
-                  {/* Carousel Navigation */}
-                  <div className="flex items-center justify-between pt-6 mt-6 border-t border-white/5">
-                    <button
-                      onClick={handlePrev}
-                      aria-label="Previous testimonial"
-                      className="p-2.5 rounded-full glass border border-white/10 hover:border-primary hover:text-primary transition-all cursor-pointer text-muted-foreground"
-                    >
-                      <ChevronLeft className="w-4 h-4" />
-                    </button>
-
-                    <div className="flex items-center gap-1.5">
-                      {testimonials.map((_, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => setCurrentTestimonial(idx)}
-                          aria-label={`Go to slide ${idx + 1}`}
-                          className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                            idx === currentTestimonial
-                              ? "w-6 bg-primary"
-                              : "w-1.5 bg-white/20 hover:bg-white/40"
-                          }`}
-                        />
-                      ))}
-                    </div>
-
-                    <button
-                      onClick={handleNext}
-                      aria-label="Next testimonial"
-                      className="p-2.5 rounded-full glass border border-white/10 hover:border-primary hover:text-primary transition-all cursor-pointer text-muted-foreground"
-                    >
-                      <ChevronRight className="w-4 h-4" />
-                    </button>
-                  </div>
                 </div>
-              </Reveal>
-            </div>
-          )}
+
+                {/* ===============================================
+                    SCREENSHOT
+                =============================================== */}
+
+                <div className="p-3">
+
+                  <div className="relative w-full rounded-xl border border-border/70 bg-background/50 overflow-hidden flex justify-center">
+
+                    <img
+                      key={testimonial.id}
+                      src={testimonial.image}
+                      alt={`${testimonial.name} LinkedIn feedback`}
+                      className="
+                        w-auto
+                        max-w-full
+                        h-auto
+                        max-h-[400px]
+                        object-contain
+                      "
+                      loading="lazy"
+                    />
+
+                  </div>
+
+                </div>
+
+                {/* ===============================================
+                    PERSON INFORMATION
+                =============================================== */}
+
+                <div className="px-4 pb-4">
+
+                  <div className="pt-3 border-t border-border/70">
+
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+
+                      <div>
+                        <h4 className="text-[14px] font-semibold text-foreground">
+                          {testimonial.name}
+                        </h4>
+
+                        <p className="text-[11px] text-muted-foreground mt-0.5">
+                          {testimonial.role}
+                        </p>
+                      </div>
+
+                      {/* =========================================
+                          VIEW LINKEDIN POST BUTTON
+                      ========================================= */}
+
+                      {testimonial.link && (
+                        <a
+                          href={testimonial.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="
+                            inline-flex
+                            items-center
+                            justify-center
+                            gap-2
+                            px-3
+                            py-2
+                            rounded-lg
+                            border
+                            border-primary/40
+                            bg-primary/5
+                            text-[11px]
+                            font-semibold
+                            text-primary
+                            hover:bg-primary
+                            hover:text-background
+                            hover:border-primary
+                            transition-all
+                            shrink-0
+                          "
+                        >
+                          <FaLinkedin className="w-3.5 h-3.5" />
+
+                          View Post
+
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      )}
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                {/* ===============================================
+                    CAROUSEL CONTROLS
+                =============================================== */}
+
+                {testimonials.length > 1 && (
+                  <div className="px-4 py-3 border-t border-border/70">
+
+                    <div className="flex items-center justify-between">
+
+                      {/* Previous */}
+
+                      <button
+                        type="button"
+                        onClick={previousTestimonial}
+                        aria-label="Previous testimonial"
+                        className="
+                          w-9
+                          h-9
+                          flex
+                          items-center
+                          justify-center
+                          rounded-full
+                          border
+                          border-border
+                          text-muted-foreground
+                          hover:text-primary
+                          hover:border-primary/50
+                          hover:bg-primary/5
+                          transition-all
+                          focus-visible:outline-none
+                          focus-visible:ring-2
+                          focus-visible:ring-primary/50
+                        "
+                      >
+                        <ArrowLeft className="w-4 h-4" />
+                      </button>
+
+                      {/* Pagination */}
+
+                      <div className="flex items-center gap-2">
+
+                        {testimonials.map((item, index) => {
+                          const isActive =
+                            index === currentTestimonial;
+
+                          return (
+                            <button
+                              key={item.id}
+                              type="button"
+                              onClick={() =>
+                                goToTestimonial(index)
+                              }
+                              aria-label={`Go to testimonial ${
+                                index + 1
+                              }`}
+                              aria-current={
+                                isActive ? "true" : undefined
+                              }
+                              className={`
+                                h-1.5
+                                rounded-full
+                                transition-all
+                                duration-300
+                                focus-visible:outline-none
+                                focus-visible:ring-2
+                                focus-visible:ring-primary/50
+
+                                ${
+                                  isActive
+                                    ? "w-7 bg-primary"
+                                    : "w-1.5 bg-muted-foreground/30 hover:bg-muted-foreground/60"
+                                }
+                              `}
+                            />
+                          );
+                        })}
+
+                      </div>
+
+                      {/* Next */}
+
+                      <button
+                        type="button"
+                        onClick={nextTestimonial}
+                        aria-label="Next testimonial"
+                        className="
+                          w-9
+                          h-9
+                          flex
+                          items-center
+                          justify-center
+                          rounded-full
+                          border
+                          border-border
+                          text-muted-foreground
+                          hover:text-primary
+                          hover:border-primary/50
+                          hover:bg-primary/5
+                          transition-all
+                          focus-visible:outline-none
+                          focus-visible:ring-2
+                          focus-visible:ring-primary/50
+                        "
+                      >
+                        <ArrowRight className="w-4 h-4" />
+                      </button>
+
+                    </div>
+
+                  </div>
+                )}
+
+              </div>
+
+            </Reveal>
+
+          </div>
+
         </div>
       </div>
     </section>
