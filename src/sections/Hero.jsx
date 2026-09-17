@@ -140,7 +140,7 @@ export const Hero = () => {
               </a>
 
               <a
-                href="/cv.pdf"
+                href="/Janidu_Kasuntha_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="

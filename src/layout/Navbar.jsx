@@ -137,7 +137,7 @@ export const Navbar = () => {
           {/* Resume */}
           <div className="hidden md:flex items-center shrink-0">
             <a
-              href="/cv.pdf"
+              href="/Janidu_Kasuntha_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-4 py-2 rounded-lg border border-primary/50 text-sm font-medium text-primary transition-all duration-200 hover:bg-primary hover:text-background hover:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
@@ -201,7 +201,7 @@ export const Navbar = () => {
 
               <div className="py-3.5">
                 <a
-                  href="/cv.pdf"
+                  href="/Janidu_Kasuntha_Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsMobileMenuOpen(false)}
